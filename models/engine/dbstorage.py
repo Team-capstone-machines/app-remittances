@@ -3,7 +3,7 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from models.receiver import Receiver
+from models.receiver import Receiver, Base
 from models.history import History
 from os import getenv
 
@@ -12,7 +12,7 @@ classes = {
     "History": History
 }
 
-class DBStorage():
+class DBstorage():
     __engine = None
     __session = None
 
@@ -32,7 +32,7 @@ class DBStorage():
     def all(self, cls=None):
         """Query on the current database session"""
         new_dict = {}
-        if cls in classes:
+        if str(cls) in classes:
             objs = self.__session.query(classes[cls]).all()
             for obj in objs:
                 key = obj.id
