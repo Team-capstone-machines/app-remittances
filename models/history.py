@@ -8,7 +8,7 @@ Base = declarative_base()
 
 
 class History(Base):
-    """ The history class, contains sender name, phone, cash, the_status """
+    """ The history class, contains shipment date, phone, balance """
     __tablename__ = 'history'
 
     id = Column(Integer, primary_key=True)
@@ -17,6 +17,7 @@ class History(Base):
     balance = Column(String(100), nullable=False)
 
     def __init__(self, id, date):
+        """ method constructor """
         self.id = id
         self.date = datetime.datetime.now()
 
