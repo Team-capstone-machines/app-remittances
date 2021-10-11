@@ -7,12 +7,17 @@ Base = declarative_base()
 
 
 class Receiver(Base):
-    """ The receiver class, contains sender name, phone, cash, the_status """
+    """ The receiver class, contains sender name, phone, cash """
     __tablename__ = 'receiver'
 
+    id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     name = Column(String(120), nullable=False)
     phone = Column(String(20), nullable=False)
     cash = Column(String(100), nullable=False)
+
+    def __init__(self, id):
+        """ method constructor """
+        self.id = id
 
     def print_dict(self):
         """ to print the dictionary """

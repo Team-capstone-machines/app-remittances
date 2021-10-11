@@ -11,7 +11,7 @@ class History(Base):
     """ The history class, contains shipment date, phone, balance """
     __tablename__ = 'history'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     date = Column(Date, nullable=False)
     phone = Column(String(20), nullable=False)
     balance = Column(String(100), nullable=False)
