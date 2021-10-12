@@ -1,0 +1,91 @@
+body {
+    background-color: #A2DBFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #8A8A8A;
+}
+
+.square {
+    margin-top: 4%;
+    border: #8A8A8A solid 5px;
+    padding: 2%;
+    border-radius: 2%;
+}
+
+label {
+    display: block;
+    font-size: x-large;
+    font-family: Cambria;
+    text-align: center;
+}
+
+#name {
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid #8A8A8A;
+    background-color: #A2DBFF;
+    font-size: large;
+    color: #8A8A8A;
+    text-align: center;
+}
+
+#name::placeholder {
+    color: #A4A4A4;
+    text-align: center;
+    font-family: Cambria;
+}
+
+#name:focus {
+    outline: none;
+    color: #8A8A8A;
+    text-align: center;
+    font-family: Cambria;
+}
+
+#phone {
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid #8A8A8A;
+    background-color: #A2DBFF;
+    font-size: large;
+    color: #8A8A8A;
+    text-align: center;
+}
+
+#phone::placeholder {
+    color: #A4A4A4;
+    text-align: center;
+    font-family: Cambria;
+}
+
+#phone:focus {
+    outline: none;
+    color: #8A8A8A;
+    text-align: center;
+    font-family: Cambria;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-family: Cambria;
+    outline: none;
+    color: #A2DBFF;
+    background-color: #8A8A8A;
+    border: none;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: #A2DBFF;
+    color: #8A8A8A;
+    border: 1px solid #8A8A8A;
+}
+
+button:active {
+transform: translateY(4px);
+}

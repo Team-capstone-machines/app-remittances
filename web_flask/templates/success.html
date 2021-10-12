@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles/success.css">
+    <script type="text/javascript" src="../static/scripts/cash-storaged.js"></script>
+    <link rel="icon" href="../static/images/money-flow.png">
+    <title>Success</title>
+</head>
+<body>
+    <div class="square">
+        {% if cash != 0 %}
+        <div style="display: flex; flex-direction: row;">
+            <div class="info">
+                <h3>Nombre:</h3><p>{{ name }}</p>
+                <h3>Teléfono:</h3><p>{{ phone }}</p>
+            </div>
+            <div class="container">
+                <div class="status"></div>
+            </div>
+        </div>
+        <div class="saldo" style="display: flex; justify-content: space-around;">
+            <h1 id="cash">{{ cash }}</h1>
+        </div>
+        <div style="display: flex; justify-content: space-around;">
+            <form action="/receiver/get?phone={{ phone }}" method="POST">
+                <button>Cobrar</button>
+            </form>
+        </div>
+        {% else %}
+        <div style="display: flex; flex-direction: row;">
+            <div class="info">
+                <h3>Nombre:</h3><p>{{ name }}</p>
+                <h3>Teléfono:</h3><p>{{ phone }}</p>
+            </div>
+            <div class="container">
+                <div class="status"></div>
+            </div>
+        </div>
+        <div class="saldo" style="display: flex; justify-content: space-around;">
+            <h1 id="cash">{{ cash }}</h1>
+        </div>
+        <div style="display: flex; justify-content: space-around;">
+            <form action="/receiver" method="GET">
+                <button>Volver</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

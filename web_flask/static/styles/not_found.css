@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #A2DBFF;
+    color: #8A8A8A;
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+}

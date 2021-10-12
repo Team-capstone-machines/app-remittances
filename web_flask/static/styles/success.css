@@ -1,0 +1,63 @@
+body {
+    background-color: #A2DBFF;
+    display: flex;
+    justify-content: center;
+    color: #8A8A8A;
+}
+
+.square {
+    border: #8A8A8A solid 5px;
+    border-radius: 2%;
+    margin: 5%;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    font-size: 25px;
+    font-family: Cambria;
+}
+
+.saldo {
+    font-size: 22px;
+}
+
+.container {
+    min-width: 160px;
+    display: flex;
+    justify-content: right;
+}
+
+.status {
+    width: 70%;
+    height: auto;
+    margin-top: 40%;
+    background: url("../images/clipart1795386.png") no-repeat;
+    background-size: contain;
+}
+
+button {
+    padding: 10px 10px;
+    margin: 5%;
+    font-size: 24px;
+    font-family: Cambria;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #A2DBFF;
+    background-color: #8A8A8A;
+    border: none;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: #A2DBFF;
+    color: #8A8A8A;
+    border: 1px solid #8A8A8A;
+}
+
+button:active {
+transform: translateY(4px);
+}
