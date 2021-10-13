@@ -28,7 +28,9 @@ def receiver():
             del new_inst.__dict__['_sa_instance_state']
         return jsonify(new_inst.__dict__), 201
 
-@app_views.route("/receiver/<phone_id>", methods=['GET', 'PUT'], strict_slashes=False)
+
+@app_views.route(
+    "/receiver/<phone_id>", methods=['GET', 'PUT'], strict_slashes=False)
 def receiver_id(phone_id=None):
     if request.method == 'GET':
         _receiver = storage.all('Receiver').values()
@@ -41,8 +43,9 @@ def receiver_id(phone_id=None):
         data_json = request.get_json()
         encrypted_phone = Encrypt(data_json['phone'])
         user_receiver = storage.get('Receiver', encrypted_phone)
-        cash_total = int(data_json['cash']) + int(user_receiver[0].__dict__['cash'])
+        cash_total = int(data_json['cash']) +\
+            int(user_receiver[0].__dict__['cash'])
         storage.update('Receiver', encrypted_phone, cash_total)
         if '_sa_instance_state' in user_receiver[0].__dict__:
-                del user_receiver[0].__dict__['_sa_instance_state']
+            del user_receiver[0].__dict__['_sa_instance_state']
         return jsonify(user_receiver[0].__dict__)
