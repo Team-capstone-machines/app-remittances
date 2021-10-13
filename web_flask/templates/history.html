@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles/history.css">
+    <link rel="icon" href="../static/images/money-flow.png">
+    <script type="text/javascript" src="../static/scripts/cash.js"></script>
+    <script type="text/javascript" src="../static/scripts/history_cash.js"></script>
+    <title>History</title>
+</head>
+<body>
+    <div class="square">
+        <div>
+            <label for="">Historial de remesas hechas al número de teléfono ##########</label>
+        </div><br>
+        <table id="transactions">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>12/10/2021</td>
+                    <td class="amount">20000</td>
+                </tr>
+                <tr>
+                    <td>11/10/2021</td>
+                    <td class="amount">30000</td>
+                </tr>
+                <tr>
+                    <td>10/10/2021</td>
+                    <td class="amount">40000</td>
+                </tr>
+            </tbody>
+        </table><br><br>
+        <div>
+            <h1>Disponible: {{ cash }}</h1>
+        </div>
+        <div>
+            <div>
+                <label for="cash">¿Cuánto dinero desea retirar?</label>
+            </div><br><br>
+            <div>
+                <input id="cash" name="cash" type="currency" placeholder="Cantidad...">
+            </div><br><br>
+            <div style="display: flex; justify-content: center;">
+                <form action="">
+                    <button>Cobrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
