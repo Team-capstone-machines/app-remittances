@@ -8,10 +8,16 @@ from flask.json import jsonify
 app = Flask(__name__)
 
 
-@app.route('/sender', strict_slashes=False)
+@app.route('/sender', methods=['GET', 'POST'], strict_slashes=False)
 def sender():
     """  """
     return render_template('sender.html')
+
+
+@app.route('/receiver', methods=['GET', 'POST'], strict_slashes=False)
+def receiver():
+    """  """
+    return render_template('receiver.html')
 
 
 @app.errorhandler(404)
