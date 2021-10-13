@@ -55,11 +55,11 @@ class DBstorage():
         """Commit all changes of the current database session"""
         self.__session.commit()
 
-    # def update(self, cls, phone):
-    #     """Update the column payout"""
-    #     self.__session.query(classes[cls]).filter(
-    #         classes[cls].phone == phone).update({'payout': 1})
-    #     self.save()
+    def update(self, cls, phone, cash):
+        """Update the column payout"""
+        self.__session.query(classes[cls]).filter(
+            classes[cls].phone == phone).update({'cash': cash})
+        self.save()
 
     def delete(self, obj=None):
         """Delete from the current database session obj if not None"""

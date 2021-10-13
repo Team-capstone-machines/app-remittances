@@ -15,9 +15,12 @@ class Receiver(Base):
     phone = Column(String(40), nullable=False)
     cash = Column(String(100), nullable=False)
 
-    def __init__(self, id):
+    def __init__(self, **kwargs):
         """ method constructor """
-        self.id = id
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    setattr(self, key, value)
 
     def print_dict(self):
         """ to print the dictionary """
