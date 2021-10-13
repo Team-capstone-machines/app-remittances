@@ -13,7 +13,7 @@
 <body>
     <div class="square">
         <div>
-            <label for="">Historial de remesas hechas al número de teléfono ##########</label>
+            <label for="">Historial de remesas hechas al número de teléfono {{ phone }}</label>
         </div><br>
         <div class="table">
             <table id="transactions">
@@ -24,78 +24,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for history in list_history %}
                     <tr>
-                        <td>12/10/2021</td>
-                        <td class="amount">20000</td>
+                        <td>{{ history.date }}</td>
+                        <td class="amount">{{ history.balance }}</td>
                     </tr>
-                    <tr>
-                        <td>11/10/2021</td>
-                        <td class="amount">30000</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/2021</td>
-                        <td class="amount">40000</td>
-                    </tr>
-                    <tr>
-                        <td>12/10/2021</td>
-                        <td class="amount">20000</td>
-                    </tr>
-                    <tr>
-                        <td>11/10/2021</td>
-                        <td class="amount">30000</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/2021</td>
-                        <td class="amount">40000</td>
-                    </tr>
-                    <tr>
-                        <td>12/10/2021</td>
-                        <td class="amount">20000</td>
-                    </tr>
-                    <tr>
-                        <td>11/10/2021</td>
-                        <td class="amount">30000</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/2021</td>
-                        <td class="amount">40000</td>
-                    </tr>
-                    <tr>
-                        <td>12/10/2021</td>
-                        <td class="amount">20000</td>
-                    </tr>
-                    <tr>
-                        <td>11/10/2021</td>
-                        <td class="amount">30000</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/2021</td>
-                        <td class="amount">40000</td>
-                    </tr>
-                    <tr>
-                        <td>12/10/2021</td>
-                        <td class="amount">20000</td>
-                    </tr>
-                    <tr>
-                        <td>11/10/2021</td>
-                        <td class="amount">30000</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/2021</td>
-                        <td class="amount">40000</td>
-                    </tr>
-                    <tr>
-                        <td>12/10/2021</td>
-                        <td class="amount">20000</td>
-                    </tr>
-                    <tr>
-                        <td>11/10/2021</td>
-                        <td class="amount">30000</td>
-                    </tr>
-                    <tr>
-                        <td>10/10/2021</td>
-                        <td class="amount">40000</td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div><br><br>
@@ -106,14 +40,14 @@
             <div>
                 <label for="cash">¿Cuánto dinero desea retirar?</label>
             </div><br><br>
-            <div>
-                <input id="cash" name="cash" type="currency" placeholder="Cantidad...">
-            </div><br><br>
-            <div style="display: flex; justify-content: center;">
-                <form action="">
+            <form action="/receiver/{{ phone }}" method="POST">
+                <div>
+                    <input id="cash" name="cash" type="currency" placeholder="Cantidad...">
+                </div><br><br>
+                <div style="display: flex; justify-content: center;">
                     <button>Cobrar</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
