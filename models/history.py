@@ -13,7 +13,7 @@ class History(Base):
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     date = Column(Date, nullable=False)
-    phone = Column(String(20), nullable=False)
+    phone = Column(String(40), nullable=False)
     balance = Column(String(100), nullable=False)
 
     def __init__(self, id, date):

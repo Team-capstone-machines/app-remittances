@@ -2,6 +2,6 @@
 CREATE TABLE IF NOT EXISTS history (
     id serial NOT NULL PRIMARY KEY,
     date DATE DEFAULT (CURRENT_DATE),
-    phone VARCHAR(20) NOT NULL,
+    phone VARCHAR(40) NOT NULL,
     balance VARCHAR(100)
 );
