@@ -1,0 +1,118 @@
+body {
+    background-color: #A2DBFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #8A8A8A;
+}
+
+.square {
+    margin-top: 4%;
+    border: #8A8A8A solid 5px;
+    padding: 4%;
+    border-radius: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table {
+    width: 60%;
+}
+
+table tbody {
+    display: block;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+  
+table thead {
+    display: table;
+    width: 100%;
+}
+
+table tbody tr {
+    display: table;
+    width: 99.7%;
+}
+
+#transactions {
+    font-family: Cambria;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#transactions td, #transactions th {
+    border: 1px solid #8A8A8A;
+    padding: 8px;
+}
+
+#transactions tr:nth-child(odd) {
+    background-color: #EEEEEE;
+}
+
+#transactions tr:nth-child(even) {
+    background-color: #D0D0D0;
+}
+
+#transactions th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #8A8A8A;
+    color: #A2DBFF;
+}
+
+label {
+    display: block;
+    font-size: x-large;
+    font-family: Cambria;
+    text-align: center;
+}
+
+#cash {
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid #8A8A8A;
+    background-color: #A2DBFF;
+    font-size: large;
+    color: #8A8A8A;
+    text-align: center;
+}
+
+#cash:focus {
+    outline: none;
+    color: #8A8A8A;
+    text-align: center;
+    font-family: Cambria;
+}
+
+#cash::placeholder {
+    color: #A4A4A4;
+    text-align: center;
+    font-family: Cambria;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 24px;
+    font-family: Cambria;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #A2DBFF;
+    background-color: #8A8A8A;
+    border: none;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: #A2DBFF;
+    color: #8A8A8A;
+    border: 1px solid #8A8A8A;
+}
+
+button:active {
+transform: translateY(4px);
+}
