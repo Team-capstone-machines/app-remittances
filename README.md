@@ -45,6 +45,8 @@ The structure of the REST response that is sent from the server is a representat
 
 We have created an API for the remittance service that has two endpoints /receiver and /history. For this API we need a Receiver model and a History model. All the API documentation can be consulted [https://themachines.stoplight.io/docs/remittances-as-a-service/YXBpOjIzODcyNzA3-remittances](here)
 
+![diagram](img/rest_api_arch.png)
+
 ### Endpoints
 
 table here!
