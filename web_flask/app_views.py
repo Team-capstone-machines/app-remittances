@@ -41,24 +41,26 @@ def sender():
             storage.save()
             return render_template('sended.html')
 
-@app.route('/receiver', methods=['POST', 'GET'], strict_slashes=False)
+
+@app.route('/receiver', strict_slashes=False)
 def receiver():
     """ This function gets, updates the information of the receiver.
     """
-    if request.method == 'GET':
-        return render_template('receiver.html')
+    return render_template('receiver.html')
 
-@app.route('/receiver/<receiver_id>', methods=['POST', 'GET'], strict_slashes=False)
+
+@app.route(
+    '/receiver/<receiver_id>', methods=['POST', 'GET'], strict_slashes=False)
 def receiver_id(receiver_id):
     if request.method == 'GET':
         phone = Encrypt(request.args.get('pho'))
-        user_history  = storage.get("History", phone)
+        user_history = storage.get("History", phone)
         user_receiver = storage.get('Receiver', phone)
         if user_history != [] and user_receiver != []:
             cash = user_receiver[0].__dict__['cash']
             return render_template(
                 'history.html', list_history=user_history, cash=cash,
-                phone = request.args.get('pho'))
+                phone=request.args.get('pho'))
         else:
             return render_template('failed.html')
     if request.method == 'POST':
@@ -71,10 +73,12 @@ def receiver_id(receiver_id):
             new_inst = History(phone=phone, balance='- ' + str(cash))
             storage.new(new_inst)
             storage.save()
-            return render_template('success.html', name=user_receiver[0].__dict__['name'],
-            phone=receiver_id, cash=cash)
+            return render_template(
+                'success.html', name=user_receiver[0].__dict__['name'],
+                phone=receiver_id, cash=cash)
         else:
             return render_template('success.html', cash=cash_total)
+
 
 @app.route('/receiver/get', strict_slashes=False)
 def home_page():
