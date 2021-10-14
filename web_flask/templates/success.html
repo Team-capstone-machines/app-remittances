@@ -13,18 +13,16 @@
 <body>
     <div class="square">
         <div style="display: flex; flex-direction: row;">
-            <div class="info">
-                <h3>El cobro se ha realizado correctamente</h3>
+            <div class="text">
+                <p>El cobro se ha realizado correctamente</p>
             </div>
-            <div class="container">
-                <div class="status"></div>
-            </div>
+            <div class="status"></div>
         </div>
         <div class="saldo" style="display: flex; justify-content: space-around;">
-            <h2>Cantidad cobrada: </h2><h3 class="currency">{{ cash }}</h3>
+            <p class="text">Cantidad cobrada:<h3 class="currency">{{ cash }}</h3></p>
         </div>
         <div class="saldo" style="display: flex; justify-content: space-around;">
-            <h2>Disponible: </h2><h3 class="currency">{{ cash }}</h3>
+            <p class="text">Disponible:<h3 class="currency">{{ cash }}</h3></p>
         </div>
         <div style="display: flex; justify-content: space-around;">
             <form action="/receiver/get" method="GET">

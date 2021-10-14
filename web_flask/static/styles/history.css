@@ -1,14 +1,16 @@
 body {
-    background-color: #A2DBFF;
+    background-color: #FFF;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #8A8A8A;
+    color: #000;
 }
 
 .square {
     margin-top: 4%;
-    border: #8A8A8A solid 5px;
+    border: none;
+    background-color: #F3F3F3;
+    box-shadow: 0px 0px 12px 0px #8A8A8A;
     padding: 4%;
     border-radius: 2%;
     display: flex;
@@ -37,9 +39,10 @@ tbody::-webkit-scrollbar {
 
 #transactions {
     display: table;
-    font-family: Cambria;
+    font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    box-shadow: 0px 0px 12px 0px #8A8A8A;
 }
 
 #transactions td, #transactions th {
@@ -61,14 +64,14 @@ tbody::-webkit-scrollbar {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #8A8A8A;
-    color: #A2DBFF;
+    background-color: #214CD9;
+    color: #FFF;
 }
 
 label {
     display: block;
     font-size: x-large;
-    font-family: Cambria;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
@@ -76,7 +79,7 @@ label {
     width: 90%;
     border: none;
     border-bottom: 1px solid #8A8A8A;
-    background-color: #A2DBFF;
+    background-color: #F3F3F3;
     font-size: large;
     color: #8A8A8A;
     text-align: center;
@@ -86,33 +89,36 @@ label {
     outline: none;
     color: #8A8A8A;
     text-align: center;
-    font-family: Cambria;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    box-shadow: 0px 0px 12px 0px #8A8A8A;
 }
 
 #cash::placeholder {
     color: #A4A4A4;
     text-align: center;
-    font-family: Cambria;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
     padding: 15px 25px;
     font-size: 24px;
-    font-family: Cambria;
+    font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
-    color: #A2DBFF;
-    background-color: #8A8A8A;
+    color: #FFF;
+    background-color: #214CD9;
     border: none;
     border-radius: 15px;
+    box-shadow: 0px 0px 15px 0px #606060;
 }
 
 button:hover {
-    background-color: #A2DBFF;
-    color: #8A8A8A;
-    border: 1px solid #8A8A8A;
+    background-color: #FFF;
+    color: #214CD9;
+    border: none;
 }
 
 button:active {
