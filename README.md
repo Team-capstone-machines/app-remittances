@@ -71,6 +71,9 @@ _Receiver-success:_
 *Receiver-success-back:*
 ![receiver-success-back](img/success-return.png)
 
+*Receiver-success-fail:*
+![receiver-success-fail](img/collect_failed.png)
+
 *Receiver-failed:*
 ![receiver-failed](img/receiver-failed.png)
 
