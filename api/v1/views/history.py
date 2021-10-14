@@ -5,6 +5,7 @@ from flask import request, jsonify
 from function_help import Encrypt
 from models import storage
 
+
 @app_views.route("/history", methods=['GET', 'POST'], strict_slashes=False)
 def history():
     if request.method == 'GET':
