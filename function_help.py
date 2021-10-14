@@ -4,6 +4,7 @@
 
 import hashlib
 
+
 def Encrypt(number):
     """ This function adds the total cash.
     """
@@ -15,5 +16,10 @@ def Encrypt(number):
 def Convert_int(number):
     """ This function convert to int.
     """
-    list_cash = number.split('.')
-    return int(list_cash[0].replace(",", "").replace("$", ""))
+    if number.find('.') != -1:
+        list_cash = number.split('.')
+        return int(list_cash[0].replace(",", "").replace("$", ""))
+    if number.find('+') != -1:
+        return int(number.replace('+ ', ''))
+    else:
+        return int(number.replace('- ', ''))
