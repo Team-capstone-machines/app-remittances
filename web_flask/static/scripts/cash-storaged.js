@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
         integer = temparray.join(thousandseparater);
         return sign + integer + decimalcharacter + fraction;
     }
-    let quantity = document.getElementById("cash").textContent;
-    let amount = CurrencyFormat(parseInt(quantity));
-    document.getElementById("cash").innerHTML = '$ ' + amount;
+    let quantity = document.getElementsByClassName("currency");
+    for (let index = 0; index < quantity.length; index++) {
+        amount = CurrencyFormat(quantity[index].innerText)
+        document.getElementsByClassName("currency")[index].innerHTML = '$ ' + amount;
+    }
 });
