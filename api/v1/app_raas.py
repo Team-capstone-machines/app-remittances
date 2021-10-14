@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from api.v1.views import app_views
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask.helpers import make_response
 
 app = Flask(__name__)
