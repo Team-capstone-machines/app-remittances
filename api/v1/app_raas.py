@@ -7,6 +7,7 @@ from flask.helpers import make_response
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
+
 @app.errorhandler(400)
 def show_error(error):
     list_errror = str(error).split(': ')
@@ -21,6 +22,7 @@ def show_error(error):
     if list_errror[1] == 'Missing sign positive(+) or negative(-)':
         return make_response(jsonify({"error": list_errror[1]}), 400)
 
+
 @app.errorhandler(404)
 def show_error(error):
     list_errror = str(error).split(': ')
@@ -28,6 +30,7 @@ def show_error(error):
         return make_response(jsonify({"error": list_errror[1]}), 404)
     if list_errror[1] == 'Amount invalido. Can not be processed':
         return make_response(jsonify({"error": list_errror[1]}), 404)
+
 
 @app.errorhandler(413)
 def show_error(error):
