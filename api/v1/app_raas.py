@@ -10,7 +10,6 @@ app.register_blueprint(app_views)
 
 @app.errorhandler(400)
 def show_error(error):
-    print('Hola 400')
     list_errror = str(error).split(': ')
     if list_errror[1] == 'Not a JSON':
         return make_response(jsonify({"error": list_errror[1]}), 400)
@@ -35,9 +34,13 @@ def show_error(error):
 
 @app.errorhandler(413)
 def show_error(error):
-    print('Hola 413')
     list_errror = str(error).split(': ')
     return make_response(jsonify({"error": list_errror[1]}), 413)
+
+@app.errorhandler(422)
+def show_error(error):
+    list_errror = str(error).split(': ')
+    return make_response(jsonify({"error": list_errror[1]}), 422)
 
 
 if __name__ == "__main__":
