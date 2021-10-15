@@ -82,7 +82,6 @@ def receiver_id(phone_id=None):
         if data_json['cash'].find('+') != -1:
             cash_total = Convert_int(data_json['cash']) + int(
                 _receiver[0].__dict__['cash'])
-            print(cash_total)
             storage.update('Receiver', encrypted_phone, cash_total)
             new_inst = History(
                 phone=encrypted_phone, balance=data_json['cash'])
