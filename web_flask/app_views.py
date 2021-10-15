@@ -68,16 +68,15 @@ def receiver_id(receiver_id):
         phone = Encrypt(receiver_id)
         user_receiver = storage.get('Receiver', phone)
         cash_total = int(user_receiver[0].__dict__['cash']) - cash
-        if cash_total > 0:
+        if cash_total > -1:
             storage.update('Receiver', phone, str(cash_total))
             new_inst = History(phone=phone, balance='- ' + str(cash))
             storage.new(new_inst)
             storage.save()
             return render_template(
-                'success.html', name=user_receiver[0].__dict__['name'],
-                phone=receiver_id, cash=cash)
+                'success.html', cash=cash, cash_total=cash_total)
         else:
-            return render_template('success.html', cash=cash_total)
+            return render_template('exceeded.html', cash=cash_total)
 
 
 @app.route('/receiver/get', strict_slashes=False)
