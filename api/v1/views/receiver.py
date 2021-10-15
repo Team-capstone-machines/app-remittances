@@ -42,19 +42,23 @@ def receiver():
         if len(data_json['cash']) > 100:
             abort(413, description=PETITION_CASH)
         encrypted_phone = Encrypt(data_json['phone'])
-        data_json['phone'] = encrypted_phone
-        new_inst = Receiver(**data_json)
-        storage.new(new_inst)
-        storage.save()
-        new_inst_2 = History(
-            phone=data_json['phone'], balance='+ ' + data_json['cash'])
-        storage.new(new_inst_2)
-        storage.save()
-        if '_sa_instance_state' in new_inst.__dict__:
-            del new_inst.__dict__['_sa_instance_state']
-        if '_sa_instance_state' in new_inst_2.__dict__:
-            del new_inst_2.__dict__['_sa_instance_state']
-        return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
+        user_receiver = storage.get('Receiver', encrypted_phone)
+        if user_receiver == []:
+            data_json['phone'] = encrypted_phone
+            new_inst = Receiver(**data_json)
+            storage.new(new_inst)
+            storage.save()
+            new_inst_2 = History(
+                phone=data_json['phone'], balance='+ ' + data_json['cash'])
+            storage.new(new_inst_2)
+            storage.save()
+            if '_sa_instance_state' in new_inst.__dict__:
+                del new_inst.__dict__['_sa_instance_state']
+            if '_sa_instance_state' in new_inst_2.__dict__:
+                del new_inst_2.__dict__['_sa_instance_state']
+            return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
+        else:
+            abort(422, description='The record exists. POST not possible ')
 
 
 @app_views.route(
