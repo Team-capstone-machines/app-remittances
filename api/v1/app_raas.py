@@ -10,6 +10,7 @@ app.register_blueprint(app_views)
 
 @app.errorhandler(400)
 def show_error(error):
+    print('Hola 400')
     list_errror = str(error).split(': ')
     if list_errror[1] == 'Not a JSON':
         return make_response(jsonify({"error": list_errror[1]}), 400)
@@ -19,7 +20,7 @@ def show_error(error):
         return make_response(jsonify({"error": list_errror[1]}), 400)
     if list_errror[1] == 'Missing cash':
         return make_response(jsonify({"error": list_errror[1]}), 400)
-    if list_errror[1] == 'Missing sign positive(+) or negative(-)':
+    if list_errror[1] == 'Missing positive(+) or negative(-) sign':
         return make_response(jsonify({"error": list_errror[1]}), 400)
 
 
@@ -28,12 +29,13 @@ def show_error(error):
     list_errror = str(error).split(': ')
     if list_errror[1] == 'Phone id. Not found':
         return make_response(jsonify({"error": list_errror[1]}), 404)
-    if list_errror[1] == 'Amount invalido. Can not be processed':
+    if list_errror[1] == 'Invalid amount. Cannot be processed':
         return make_response(jsonify({"error": list_errror[1]}), 404)
 
 
 @app.errorhandler(413)
 def show_error(error):
+    print('Hola 413')
     list_errror = str(error).split(': ')
     return make_response(jsonify({"error": list_errror[1]}), 413)
 
