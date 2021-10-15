@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     function CurrencyFormat(number) {
         let decimalplaces = 2;
-        let decimalcharacter = ".";
-        let thousandseparater = ",";
+        let decimalcharacter = ",";
+        let thousandseparater = ".";
         number = parseFloat(number);
         let sign = number < 0 ? "-" : "";
         let formatted = new String(number.toFixed(decimalplaces));
@@ -33,9 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
     formated = CurrencyFormat(available);
     document.getElementById("available").innerHTML = '$ ' + formated;
     let quantity = document.getElementsByClassName("amount");
-    console.log(quantity);
     for (let index = 0; index < quantity.length; index++) {
-        amount = CurrencyFormat(quantity[index].innerText)
-        document.getElementsByClassName("amount")[index].innerHTML = '$ ' + amount;
+        if (quantity[index].innerText[0] === '-') {
+            amount = CurrencyFormat(quantity[index].innerText.split(' ')[1])
+            document.getElementsByClassName("amount")[index].innerHTML = '$ - ' + amount;
+        }
+        else {
+            amount = CurrencyFormat(quantity[index].innerText.split(' ')[1])
+            document.getElementsByClassName("amount")[index].innerHTML = '$ ' + amount;
+        }
     }
 });

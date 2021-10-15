@@ -27,7 +27,7 @@
                     {% for history in list_history %}
                     <tr>
                         <td>{{ history.date }}</td>
-                        <td class="amount">{{ history.balance.split(' ')[1] }}</td>
+                        <td class="amount">{{ history.balance }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -44,8 +44,9 @@
                 <div>
                     <input id="cash" name="cash" type="currency" placeholder="Cantidad...">
                 </div><br><br>
-                <div style="display: flex; justify-content: center;">
+                <div style="display: flex; justify-content: space-around;">
                     <button>Cobrar</button>
+                    <button>Volver</button>
                 </div>
             </form>
         </div>
