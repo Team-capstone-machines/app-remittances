@@ -75,7 +75,7 @@ def receiver_id(receiver_id):
 
 @app.route('/receiver/get', strict_slashes=False)
 def home_page():
-    return render_template('payout.html')
+    return render_template('receiver.html')
 
 
 if __name__ == '__main__':

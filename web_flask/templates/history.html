@@ -37,17 +37,19 @@
             <h1>Disponible: <h1 id="available">{{ cash }}</h1></h1>
         </div>
         <div>
+            <form action="/receiver/{{ phone }}" method="POST">
             <div>
                 <label for="cash">¿Cuánto dinero desea retirar?</label>
             </div><br><br>
-            <form action="/receiver/{{ phone }}" method="POST">
                 <div>
                     <input id="cash" name="cash" type="currency" placeholder="Cantidad...">
                 </div><br><br>
                 <div style="display: flex; justify-content: space-around;">
                     <button>Cobrar</button>
-                    <button>Volver</button>
                 </div>
+            </form><br><br>
+            <form action="/receiver/get" method="GET" style="display: flex; justify-content: center;">
+                <button>Volver</button>
             </form>
         </div>
     </div>
