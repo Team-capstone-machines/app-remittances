@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
         integer = temparray.join(thousandseparater);
         return sign + integer + decimalcharacter + fraction;
     }
+    let available = document.getElementById("available").innerText;
+    formated = CurrencyFormat(available);
+    document.getElementById("available").innerHTML = '$ ' + formated;
     let quantity = document.getElementsByClassName("amount");
+    console.log(quantity);
     for (let index = 0; index < quantity.length; index++) {
         amount = CurrencyFormat(quantity[index].innerText)
         document.getElementsByClassName("amount")[index].innerHTML = '$ ' + amount;

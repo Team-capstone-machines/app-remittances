@@ -27,14 +27,14 @@
                     {% for history in list_history %}
                     <tr>
                         <td>{{ history.date }}</td>
-                        <td class="amount">{{ history.balance }}</td>
+                        <td class="amount">{{ history.balance.split(' ')[1] }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div><br><br>
         <div>
-            <h1>Disponible: {{ cash }}</h1>
+            <h1>Disponible: <h1 id="available">{{ cash }}</h1></h1>
         </div>
         <div>
             <div>
