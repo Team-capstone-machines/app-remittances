@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../static/styles/success.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../static/styles/failed.css"> -->
     <script type="text/javascript" src="../static/scripts/cash-storaged.js"></script>
     <link rel="icon" href="../static/images/money-flow.png">
     <title>Success</title>
@@ -22,7 +21,7 @@
             <p class="text">Cantidad cobrada:<h3 class="currency">{{ cash }}</h3></p>
         </div>
         <div class="saldo" style="display: flex; justify-content: space-around;">
-            <p class="text">Disponible:<h3 class="currency">{{ cash }}</h3></p>
+            <p class="text">Disponible:<h3 class="currency">{{ cash_total }}</h3></p>
         </div>
         <div style="display: flex; justify-content: space-around;">
             <form action="/receiver/get" method="GET">
