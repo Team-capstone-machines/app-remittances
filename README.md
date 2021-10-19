@@ -1,14 +1,5 @@
 # REST API: Remittances as a Service
 
-## Repository contents
-
-| FILE | DESCRIPTION |
-| ---- | ----------- |
-
-<br></br>
-
-**Folder: moldels**
-
 ## Technologies
 
 **Front-end:**
@@ -43,7 +34,7 @@ The REST request structure contains:
 
 The structure of the REST response that is sent from the server is a representation of the requested resource. The format we use this time is JSON.
 
-We have created an API for the remittance service that has two endpoints /receiver and /history. For this API we need a Receiver model and a History model. All the API documentation can be consulted [https://themachines.stoplight.io/docs/remittances-as-a-service/YXBpOjIzODcyNzA3-remittances](here)
+We have created an API for the remittance service that has two endpoints /receiver and /history. For this API we need a Receiver model and a History model. All the API documentation can be consulted [https://themachines.stoplight.io/settings/remittances-as-a-service](here)
 
 ![diagram](img/rest_api_arch.png)
 
