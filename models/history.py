@@ -12,7 +12,7 @@ class History(Base):
     __tablename__ = 'history'
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    date = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    date = Column(DateTime, nullable=False, default=datetime.utcnow)
     phone = Column(String(40), nullable=False)
     balance = Column(String(100), nullable=False)
 
