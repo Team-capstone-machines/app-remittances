@@ -10,9 +10,9 @@ class Phones(Base):
     """ The phones class, contains sender phone encrypted and decrypted """
     __tablename__ = 'phones'
 
-    id = Column(Integer, nullable=False, autoincrement=True)
-    phone = Column(String(40), ForeignKey('receiver.phone'), nullable=False)
-    phone_decrypted = Column(String(40), nullable=False)
+    id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
+    phone = Column(String(40), nullable=False)
+    phone_desencrypt = Column(String(40), nullable=False)
 
     def __init__(self, **kwargs):
         """ method constructor """
