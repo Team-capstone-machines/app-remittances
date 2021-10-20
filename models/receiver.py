@@ -13,9 +13,9 @@ class Receiver(Base):
     """ The receiver class, contains sender name, phone, cash """
     __tablename__ = 'receiver'
 
-    id = Column(Integer, nullable=False, autoincrement=True)
+    id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     name = Column(String(120), nullable=False)
-    phone = Column(String(40), nullable=False, primary_key=True)
+    phone = Column(String(40), nullable=False)
     cash = Column(String(100), nullable=False)
 
     def __init__(self, **kwargs):

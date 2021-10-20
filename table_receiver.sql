@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS receiver (
     name VARCHAR(120) NOT NULL,
     phone VARCHAR(40) NOT NULL,
     cash VARCHAR(100) NOT NULL,
-    PRIMARY KEY (phone)
+    PRIMARY KEY (id)
 );
