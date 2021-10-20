@@ -11,10 +11,8 @@ class History(Base):
     """ The history class, contains shipment date, phone, balance """
     __tablename__ = 'history'
 
-    obj = datetime.now()
-
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    date = Column(DateTime, nullable=False, default=obj.replace(tzinfo=None))
+    date = Column(DateTime, nullable=False, default=datetime.now())
     phone = Column(String(40), nullable=False)
     balance = Column(String(100), nullable=False)
 
