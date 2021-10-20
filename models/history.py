@@ -12,7 +12,7 @@ class History(Base):
     __tablename__ = 'history'
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
-    date = Column(DateTime, nullable=False, default=datetime.utcnow)
+    date = Column(DateTime, nullable=False, default=datetime.now())
     phone = Column(String(40), nullable=False)
     balance = Column(String(100), nullable=False)
 
@@ -22,9 +22,9 @@ class History(Base):
             for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
-            self.date = datetime.utcnow()
+            self.date = datetime.now()
         else:
-            self.date = datetime.utcnow()
+            self.date = datetime.now()
 
     def print_dict(self):
         """ to print the dictionary """
