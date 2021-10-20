@@ -5,11 +5,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from models.receiver import Receiver, Base
 from models.history import History
+from models.phones import Phones
 from os import getenv
 
 classes = {
     "Receiver": Receiver,
-    "History": History
+    "History": History,
+    "Phones": Phones
 }
 
 class DBstorage():
