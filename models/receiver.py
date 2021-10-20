@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """ receiver module """
+from models.phones import Phones
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+
 
 Base = declarative_base()
 
@@ -18,6 +21,7 @@ class Receiver(Base):
     def __init__(self, **kwargs):
         """ method constructor """
         if kwargs:
+            print(kwargs)
             for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
