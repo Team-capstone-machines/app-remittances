@@ -3,6 +3,8 @@
 """
 
 import hashlib
+import json
+from os.path import exists
 
 
 def Encrypt(number):
