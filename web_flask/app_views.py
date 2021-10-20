@@ -6,6 +6,7 @@ from function_help import Convert_int, Encrypt
 from models import storage
 from models.history import History
 from models.receiver import Receiver
+from models.phones import Phones
 
 app = Flask(__name__)
 
@@ -31,6 +32,9 @@ def sender():
             storage.save()
             new_inst_2 = History(phone=phone, balance='+ ' + str(cash))
             storage.new(new_inst_2)
+            storage.save()
+            new_inst_3 = Phones(phone=phone, phone_desencrypt=request.form['pho'])
+            storage.new(new_inst_3)
             storage.save()
             return render_template('sended.html')
         else:
