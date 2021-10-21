@@ -22,7 +22,8 @@ def sender():
     # This condition is to display an HTML page of the sender.
     if request.method == 'GET':
         return render_template('sender.html')
-    # This condition is to process the data sent from the HTML page of the sender.
+    # This condition is to process the data sent from the
+    # HTML page of the sender.
     if request.method == 'POST':
         # Takes the data sent.
         name = request.form['nm']
@@ -89,7 +90,8 @@ def receiver_id(receiver_id):
                 cash=cash, phone=phone)
         else:
             return render_template('failed.html')
-    # This condition is to process the data sent from the HTML page of the receiver.
+    # This condition is to process the data sent from
+    # the HTML page of the receiver.
     if request.method == 'POST':
         # Takes the data sent.
         cash = Convert_int(request.form['cash'])
