@@ -3,7 +3,7 @@
 
 """
 
-from flask import Flask
+from flask import Flask, render_template
 # from flask.helpers import make_response
 # from storage import History, Receiver, storage
 # from function_help import Convert_int, Encrypt
@@ -240,7 +240,7 @@ app = Flask(__name__)
 @app.route('/receiver')
 def receiver():
     """  """
-    return "Receiver"
+    return render_template('receiver.html')
 
 
 if __name__ == "__main__":
