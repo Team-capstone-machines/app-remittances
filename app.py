@@ -240,7 +240,7 @@ app = Flask(__name__)
 @app.route('/receiver')
 def receiver():
     """  """
-    return render_template('receiver.html')
+    return 'Hello'
 
 
 if __name__ == "__main__":
