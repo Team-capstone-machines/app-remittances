@@ -6,9 +6,9 @@
 from views import app_views
 from flask import request, jsonify, abort
 from function_help import Encrypt, Convert_int
-from models import storage
-from models.history import History
-from models.receiver import Receiver
+from storage import storage
+from storage import History
+from storage import Receiver
 
 # Variables for error cases.
 PETITION_NAME = "The petition 'name' exceeds the limits defined by the server"

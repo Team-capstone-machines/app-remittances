@@ -6,7 +6,7 @@
 from views import app_views
 from flask import request, jsonify
 from function_help import Encrypt
-from models import storage
+from storage import storage
 
 
 @app_views.route("/history", strict_slashes=False)

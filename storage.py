@@ -128,4 +128,3 @@ class DBstorage():
 
 storage = DBstorage()
 storage.reload()
-print(storage.all('Receiver'))
