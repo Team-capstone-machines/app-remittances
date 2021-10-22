@@ -3,10 +3,10 @@
 
 """
 
-from flask import Flask, jsonify, request, abort
-from flask.helpers import make_response
-from storage import History, Receiver, storage
-from function_help import Convert_int, Encrypt
+from flask import Flask
+# from flask.helpers import make_response
+# from storage import History, Receiver, storage
+# from function_help import Convert_int, Encrypt
 
 app = Flask(__name__)
 
@@ -244,4 +244,4 @@ def receiver():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run()
