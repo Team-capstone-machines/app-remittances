@@ -5,13 +5,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, sessionmaker, scoped_session
 from sqlalchemy import Column, String, Integer, DateTime
 from datetime import datetime
+from os import getenv
 
 Base = declarative_base()
+
 
 class Receiver(Base):
     """ The receiver class, contains sender name, phone, cash """
     __tablename__ = 'table_receiver'
-        
+
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     name = Column(String(120), nullable=False)
     phone = Column(String(40), nullable=False)
@@ -24,6 +26,7 @@ class Receiver(Base):
             for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
+
 
 class History(Base):
     """ The history class, contains shipment date, phone, balance """
@@ -44,6 +47,7 @@ class History(Base):
                 else:
                     self.date = datetime.now()
 
+
 class Phones(Base):
     """ The phones class, contains sender phone encrypted and decrypted """
     __tablename__ = 'table_phones'
@@ -51,13 +55,14 @@ class Phones(Base):
     id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
     phone = Column(String(40), nullable=False)
     phone_desencrypt = Column(String(40), nullable=False)
-    
+
     def __init__(self, **kwargs):
         """ method constructor """
         if kwargs:
             for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
+
 
 classes = {
     "Receiver": Receiver,
@@ -71,10 +76,11 @@ class DBstorage():
     __session = None
 
     def __init__(self):
+        _URL = getenv('_URL')
         self.__engine = create_engine(
-        "mssql+pyodbc://remittances_user:DUXowU%$dBmB@remittances.database.windows.net:1433/remittances_db"
-        "?driver=ODBC+Driver+17+for+SQL+Server"
-        )
+            "mssql+pyodbc://remittances_user:DUXowU%$dBmB"
+            "@remittances.database.windows.net:1433/"
+            "remittances_db?driver=ODBC+Driver+17+for+SQL+Server")
 
     def all(self, cls=None):
         """Query on the current database session"""
