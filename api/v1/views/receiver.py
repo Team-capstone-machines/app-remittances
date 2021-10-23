@@ -5,7 +5,7 @@
 
 from api.v1.views import app_views
 from flask import request, jsonify, abort
-from function_help import Encrypt, Convert_int
+from function_help import Encrypt, Convert_int, Verify_number
 from models import storage
 from models.history import History
 from models.receiver import Receiver
@@ -51,34 +51,38 @@ def receiver():
             abort(400, description="Missing phone")
         if len(data_json['phone']) > 40:
             abort(413, description=PETITION_PHONE)
-        if 'cash' not in data_json:
-            abort(400, description="Missing cash")
-        if len(data_json['cash']) > 100:
-            abort(413, description=PETITION_CASH)
-        # Encrypt the phone
-        encrypted_phone = Encrypt(data_json['phone'])
-        # Request the information of the receiver table.
-        user_receiver = storage.get('Receiver', encrypted_phone)
-        # This condition checks if the phone is registered.
-        # Otherwise, failed.
-        if user_receiver == []:
-            data_json['phone'] = encrypted_phone
-            # Create the new data in the receiver table.
-            new_inst = Receiver(**data_json)
-            storage.new(new_inst)
-            storage.save()
-            # Create the new data in the history table.
-            new_inst_2 = History(
-                phone=data_json['phone'], balance='+ ' + data_json['cash'])
-            storage.new(new_inst_2)
-            storage.save()
-            if '_sa_instance_state' in new_inst.__dict__:
-                del new_inst.__dict__['_sa_instance_state']
-            if '_sa_instance_state' in new_inst_2.__dict__:
-                del new_inst_2.__dict__['_sa_instance_state']
-            return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
+        verified_number = Verify_number(data_json['phone'])
+        if verified_number == data_json['name']:
+            if 'cash' not in data_json:
+                abort(400, description="Missing cash")
+            if len(data_json['cash']) > 100:
+                abort(413, description=PETITION_CASH)
+            # Encrypt the phone
+            encrypted_phone = Encrypt(data_json['phone'])
+            # Request the information of the receiver table.
+            user_receiver = storage.get('Receiver', encrypted_phone)
+            # This condition checks if the phone is registered.
+            # Otherwise, failed.
+            if user_receiver == []:
+                data_json['phone'] = encrypted_phone
+                # Create the new data in the receiver table.
+                new_inst = Receiver(**data_json)
+                storage.new(new_inst)
+                storage.save()
+                # Create the new data in the history table.
+                new_inst_2 = History(
+                    phone=data_json['phone'], balance='+ ' + data_json['cash'])
+                storage.new(new_inst_2)
+                storage.save()
+                if '_sa_instance_state' in new_inst.__dict__:
+                    del new_inst.__dict__['_sa_instance_state']
+                if '_sa_instance_state' in new_inst_2.__dict__:
+                    del new_inst_2.__dict__['_sa_instance_state']
+                return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
+            else:
+                abort(422, description='The record exists. POST not possible ')
         else:
-            abort(422, description='The record exists. POST not possible ')
+            return jsonify({"name": "Invalid name"})
 
 
 @app_views.route(
@@ -131,6 +135,7 @@ def receiver_id(phone_id=None):
                 del new_inst.__dict__['_sa_instance_state']
             return jsonify(_receiver[0].__dict__, new_inst.__dict__)
         if data_json['cash'].find('-') != -1:
+            print('Hello')
             cash_total = int(
                 _receiver[0].__dict__['cash']) - Convert_int(data_json['cash'])
             if cash_total < 0:
