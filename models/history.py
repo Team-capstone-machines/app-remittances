@@ -9,7 +9,7 @@ Base = declarative_base()
 
 class History(Base):
     """ The history class, contains shipment date, phone, balance """
-    __tablename__ = 'history'
+    __tablename__ = 'table_history'
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     date = Column(DateTime, nullable=False, default=datetime.now())
