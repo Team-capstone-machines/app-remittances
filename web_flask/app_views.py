@@ -3,10 +3,10 @@
 
 from flask import Flask, render_template, request
 from function_help import Convert_int, Encrypt
-from models import storage
-from models.history import History
-from models.receiver import Receiver
-from models.phones import Phones
+from storage import storage
+from storage import History
+from storage import Receiver
+from storage import Phones
 
 app = Flask(__name__)
 
