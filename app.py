@@ -3,83 +3,83 @@
 
 """
 
-from flask import Flask, render_template
-# from flask.helpers import make_response
-# from storage import History, Receiver, storage
-# from function_help import Convert_int, Encrypt
+from flask import Flask, render_template, request, abort, jsonify
+from flask.helpers import make_response
+from storage import History, Receiver, storage
+from function_help import Convert_int, Encrypt
 
 app = Flask(__name__)
 
 
 # Variables for error cases.
-# PETITION_NAME = "The petition 'name' exceeds the limits defined by the server"
-# PETITION_PHONE = "\
-#     The petition 'phone' exceeds the limits defined by the server"
-# PETITION_CASH = "The petition 'cash' exceeds the limits defined by the server"
-# AMOUNT_INVALIDO = "Invalid amount. Cannot be processed"
-# SIGN = "Missing positive(+) or negative(-) sign"
+PETITION_NAME = "The petition 'name' exceeds the limits defined by the server"
+PETITION_PHONE = "\
+    The petition 'phone' exceeds the limits defined by the server"
+PETITION_CASH = "The petition 'cash' exceeds the limits defined by the server"
+AMOUNT_INVALIDO = "Invalid amount. Cannot be processed"
+SIGN = "Missing positive(+) or negative(-) sign"
 
-# @app.route(
-#     "/receiver", methods=['GET', 'POST'], strict_slashes=False)
-# def receiver():
-#     """ This function do the action when requests the
-#     GET and POST methods to the receiver API.
+@app.route(
+    "/receiver", methods=['GET', 'POST'], strict_slashes=False)
+def receiver():
+    """ This function do the action when requests the
+    GET and POST methods to the receiver API.
 
 #     """
-#     # This condition is to returns all the information
-#     # of the receiver table.
-#     if request.method == 'GET':
-#         list_receiver = []
-#         # Request the information of the receiver table.
-#         _receiver = storage.all('Receiver').values()
-#         # For loop to add the receiver in a list.
-#         for receiver in _receiver:
-#             if '_sa_instance_state' in receiver.__dict__:
-#                 del receiver.__dict__['_sa_instance_state']
-#             list_receiver.append(receiver.__dict__)
-#         return jsonify(list_receiver)
-#     # This condition is to create information in the receiver table.
-#     if request.method == 'POST':
-#         # Conditions to handle the API errors.
-#         data_json = request.get_json()
-#         if not data_json:
-#             abort(400, description="Not a JSON")
-#         if 'name' not in data_json:
-#             abort(400, description="Missing name")
-#         if len(data_json['name']) > 120:
-#             abort(413, description=PETITION_NAME)
-#         if 'phone' not in data_json:
-#             abort(400, description="Missing phone")
-#         if len(data_json['phone']) > 40:
-#             abort(413, description=PETITION_PHONE)
-#         if 'cash' not in data_json:
-#             abort(400, description="Missing cash")
-#         if len(data_json['cash']) > 100:
-#             abort(413, description=PETITION_CASH)
-#         # Encrypt the phone
-#         encrypted_phone = Encrypt(data_json['phone'])
-#         # Request the information of the receiver table.
-#         user_receiver = storage.get('Receiver', encrypted_phone)
-#         # This condition checks if the phone is registered.
-#         # Otherwise, failed.
-#         if user_receiver == []:
-#             data_json['phone'] = encrypted_phone
-#             # Create the new data in the receiver table.
-#             new_inst = Receiver(**data_json)
-#             storage.new(new_inst)
-#             storage.save()
-#             # Create the new data in the history table.
-#             new_inst_2 = History(
-#                 phone=data_json['phone'], balance='+ ' + data_json['cash'])
-#             storage.new(new_inst_2)
-#             storage.save()
-#             if '_sa_instance_state' in new_inst.__dict__:
-#                 del new_inst.__dict__['_sa_instance_state']
-#             if '_sa_instance_state' in new_inst_2.__dict__:
-#                 del new_inst_2.__dict__['_sa_instance_state']
-#             return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
-#         else:
-#             abort(422, description='The record exists. POST not possible ')
+    # This condition is to returns all the information
+    # of the receiver table.
+    if request.method == 'GET':
+        list_receiver = []
+        # Request the information of the receiver table.
+        _receiver = storage.all('Receiver').values()
+        # For loop to add the receiver in a list.
+        for receiver in _receiver:
+            if '_sa_instance_state' in receiver.__dict__:
+                del receiver.__dict__['_sa_instance_state']
+            list_receiver.append(receiver.__dict__)
+        return jsonify(list_receiver)
+    # This condition is to create information in the receiver table.
+    if request.method == 'POST':
+        # Conditions to handle the API errors.
+        data_json = request.get_json()
+        if not data_json:
+            abort(400, description="Not a JSON")
+        if 'name' not in data_json:
+            abort(400, description="Missing name")
+        if len(data_json['name']) > 120:
+            abort(413, description=PETITION_NAME)
+        if 'phone' not in data_json:
+            abort(400, description="Missing phone")
+        if len(data_json['phone']) > 40:
+            abort(413, description=PETITION_PHONE)
+        if 'cash' not in data_json:
+            abort(400, description="Missing cash")
+        if len(data_json['cash']) > 100:
+            abort(413, description=PETITION_CASH)
+        # Encrypt the phone
+        encrypted_phone = Encrypt(data_json['phone'])
+        # Request the information of the receiver table.
+        user_receiver = storage.get('Receiver', encrypted_phone)
+        # This condition checks if the phone is registered.
+        # Otherwise, failed.
+        if user_receiver == []:
+            data_json['phone'] = encrypted_phone
+            # Create the new data in the receiver table.
+            new_inst = Receiver(**data_json)
+            storage.new(new_inst)
+            storage.save()
+            # Create the new data in the history table.
+            new_inst_2 = History(
+                phone=data_json['phone'], balance='+ ' + data_json['cash'])
+            storage.new(new_inst_2)
+            storage.save()
+            if '_sa_instance_state' in new_inst.__dict__:
+                del new_inst.__dict__['_sa_instance_state']
+            if '_sa_instance_state' in new_inst_2.__dict__:
+                del new_inst_2.__dict__['_sa_instance_state']
+            return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
+        else:
+            abort(422, description='The record exists. POST not possible ')
 
 
 # @app.route(
@@ -236,11 +236,6 @@ app = Flask(__name__)
 #     """
 #     list_errror = str(error).split(': ')
 #     return make_response(jsonify({"error": list_errror[1]}), 422)
-
-@app.route('/receiver')
-def receiver():
-    """  """
-    return render_template('receiver.html')
 
 
 if __name__ == "__main__":
