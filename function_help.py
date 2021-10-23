@@ -38,12 +38,14 @@ def Verify_number(cellphone):
 
     """
     import requests
+    from os import getenv
 
+    _TOKEN = getenv('_TOKEN')
     # The API URL
     url = "https://nufi.azure-api.net/enriquecimientoinformacion/v1/busqueda"
     headers = {
         "Content-Type": "application/json",
-        "Ocp-Apim-Subscription-Key": "40fb302751d74a6d8122afe2b5cb8b1a"
+        "Ocp-Apim-Subscription-Key": _TOKEN
     }
     # The body of the API to do the query
     body = "{\n  \"telefono\": \"" + cellphone + "\"\n}"
