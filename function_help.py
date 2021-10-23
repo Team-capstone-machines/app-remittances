@@ -6,7 +6,6 @@
 def Encrypt(number):
     """ This function encrypt the cell number.
     Return: The encrypted number.
-
     """
     import hashlib
 
@@ -19,7 +18,6 @@ def Convert_int(number):
     """ This function takes a string with number
     and the convert in integer.
     Return: The number converted.
-
     """
     # The conditions to convert the string in integer
     if number.find('.') != -1:
@@ -35,7 +33,6 @@ def Verify_number(cellphone):
     """ This function consumes the API to verify if the cell
     number is registered in the database of Mexico.
     Return: the name of the person that is register this number.
-
     """
     import requests
 

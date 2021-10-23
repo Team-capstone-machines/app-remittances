@@ -10,7 +10,7 @@ Base = declarative_base()
 
 class Receiver(Base):
     """ The receiver class, contains sender name, phone, cash """
-    __tablename__ = 'table_receiver'
+    __tablename__ = 'receiver'
         
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     name = Column(String(120), nullable=False)
@@ -27,7 +27,7 @@ class Receiver(Base):
 
 class History(Base):
     """ The history class, contains shipment date, phone, balance """
-    __tablename__ = 'table_history'
+    __tablename__ = 'history'
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     date = Column(DateTime, nullable=False, default=datetime.now())
@@ -46,7 +46,7 @@ class History(Base):
 
 class Phones(Base):
     """ The phones class, contains sender phone encrypted and decrypted """
-    __tablename__ = 'table_phones'
+    __tablename__ = 'phones'
 
     id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
     phone = Column(String(40), nullable=False)
