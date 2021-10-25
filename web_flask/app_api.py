@@ -55,7 +55,7 @@ def sender():
                     data=dict_put, headers=headers)
                 return render_template('sended.html')
         else:
-            return render_template('failed.html')
+            return render_template('Invalid name')
 
 
 @app.route('/receiver', strict_slashes=False)

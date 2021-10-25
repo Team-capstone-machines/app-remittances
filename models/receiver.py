@@ -9,7 +9,7 @@ Base = declarative_base()
 
 class Receiver(Base):
     """ The receiver class, contains sender name, phone, cash """
-    __tablename__ = 'receiver'
+    __tablename__ = 'table_receiver'
 
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     name = Column(String(120), nullable=False)

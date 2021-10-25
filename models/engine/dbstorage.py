@@ -6,7 +6,6 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from models.receiver import Receiver, Base
 from models.history import History
 from models.phones import Phones
-from os import getenv
 
 classes = {
     "Receiver": Receiver,
@@ -14,22 +13,16 @@ classes = {
     "Phones": Phones
 }
 
+
 class DBstorage():
     __engine = None
     __session = None
 
     def __init__(self):
-        _USER = getenv('_USER')
-        _PWD = getenv('_PWD')
-        _HOST = getenv('_HOST')
-        _API_PORT = getenv('_API_PORT')
-        _DB = getenv('_DB')
-        self.__engine = create_engine('postgres://{}:{}@{}:{}/{}'.
-                                    format(_USER,
-                                            _PWD,
-                                            _HOST,
-                                            _API_PORT,
-                                            _DB))
+        self.__engine = create_engine(
+            "mssql+pyodbc://remittances_user:DUXowU%$dBmB"
+            "@remittances.database.windows.net:1433/"
+            "remittances_db?driver=ODBC+Driver+17+for+SQL+Server")
 
     def all(self, cls=None):
         """Query on the current database session"""

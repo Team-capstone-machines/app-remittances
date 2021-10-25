@@ -8,7 +8,7 @@ Base = declarative_base()
 
 class Phones(Base):
     """ The phones class, contains sender phone encrypted and decrypted """
-    __tablename__ = 'phones'
+    __tablename__ = 'table_phones'
 
     id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
     phone = Column(String(40), nullable=False)
