@@ -5,15 +5,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, sessionmaker, scoped_session
 from sqlalchemy import Column, String, Integer, DateTime
 from datetime import datetime
-<<<<<<< HEAD
-
-Base = declarative_base()
-
-class Receiver(Base):
-    """ The receiver class, contains sender name, phone, cash """
-    __tablename__ = 'table_receiver'
-        
-=======
 from os import getenv
 
 Base = declarative_base()
@@ -23,7 +14,6 @@ class Receiver(Base):
     """ The receiver class, contains sender name, phone, cash """
     __tablename__ = 'table_receiver'
 
->>>>>>> dev
     id = Column(Integer, nullable=False, primary_key=True, autoincrement=True)
     name = Column(String(120), nullable=False)
     phone = Column(String(40), nullable=False)
@@ -37,10 +27,7 @@ class Receiver(Base):
                 if key != '__class__':
                     setattr(self, key, value)
 
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
 class History(Base):
     """ The history class, contains shipment date, phone, balance """
     __tablename__ = 'table_history'
@@ -60,10 +47,7 @@ class History(Base):
                 else:
                     self.date = datetime.now()
 
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
 class Phones(Base):
     """ The phones class, contains sender phone encrypted and decrypted """
     __tablename__ = 'table_phones'
@@ -71,11 +55,7 @@ class Phones(Base):
     id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)
     phone = Column(String(40), nullable=False)
     phone_desencrypt = Column(String(40), nullable=False)
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> dev
     def __init__(self, **kwargs):
         """ method constructor """
         if kwargs:
@@ -83,10 +63,7 @@ class Phones(Base):
                 if key != '__class__':
                     setattr(self, key, value)
 
-<<<<<<< HEAD
-=======
 
->>>>>>> dev
 classes = {
     "Receiver": Receiver,
     "History": History,
@@ -99,18 +76,10 @@ class DBstorage():
     __session = None
 
     def __init__(self):
-<<<<<<< HEAD
-        self.__engine = create_engine(
-        "mssql+pyodbc://remittances_user:DUXowU%$dBmB@remittances.database.windows.net:1433/remittances_db"
-        "?driver=ODBC+Driver+17+for+SQL+Server"
-        )
-=======
-        _URL = getenv('_URL')
         self.__engine = create_engine(
             "mssql+pyodbc://remittances_user:DUXowU%$dBmB"
             "@remittances.database.windows.net:1433/"
             "remittances_db?driver=ODBC+Driver+17+for+SQL+Server")
->>>>>>> dev
 
     def all(self, cls=None):
         """Query on the current database session"""
