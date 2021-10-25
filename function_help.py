@@ -59,3 +59,9 @@ def Verify_number(cellphone):
             return 'Phone not registered to any person'
     else:
         return response.json()['message']
+
+def Delete_GMT(hist_dict):
+    for date in hist_dict:
+        del_gmt = date['date'].replace('GMT', '')
+        date['date'] = del_gmt
+    return hist_dict

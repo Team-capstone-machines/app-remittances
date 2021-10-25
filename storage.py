@@ -76,7 +76,6 @@ class DBstorage():
     __session = None
 
     def __init__(self):
-        _URL = getenv('_URL')
         self.__engine = create_engine(
             "mssql+pyodbc://remittances_user:DUXowU%$dBmB"
             "@remittances.database.windows.net:1433/"
