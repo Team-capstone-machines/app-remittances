@@ -198,10 +198,21 @@ button:active {
     border: 1px solid #FA5C7C;
 }
 
+#v_pho {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
 footer {
     bottom: 0;
     padding: 17px 24px 17px;
-    position: absolute;
+    position: fixed;
     right: 0;
     left: 0;
     background-color: #C0CCDB;
