@@ -12,31 +12,40 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/receiver.css">
     <link rel="icon" href="../static/images/money-flow.png">
     <script type="text/javascript" src="../static/scripts/phone.js"></script>
+    <script type="text/javascript" src="../static/scripts/validation.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
     <title>Receiver</title>
 </head>
 <body>
-    <div class="title"></div>
+    <header></header>
     <div class="square">
-        <form class="form" action="/receiver/<receiver_id>" method="GET">
+        <div id="logo">
+            <img src="https://nufi-config.netlify.app/assets/images/logo-nufi-dark.svg">
+        </div>
+        <hr id="line">
+        <h4 id="title">Verifica tu remesa</h4>
+        <h6 id="description">Diligencia los campos para verificar si tienes una remesa a tu nombre</h6>
+        <form name="fields" class="form" action="/receiver/<receiver_id>" onsubmit="return validateForm()" method="GET">
             <label for="name">
-                <br>¿Cuál es tu nombre?<br><br>
+                <br>¿Cuál es tu nombre?
             </label>
-            <div style="display: flex; justify-content: center;">
-                <input id="name" name="nm" class="name" type="text" placeholder="Nombre..." autocomplete="off">
+            <div id="name_box" style="display: flex; justify-content: center;">
+                <input id="name" name="nm" class="name" type="text" placeholder="Nombre..." autocomplete="off" onkeydown="success_name()">
                 <span></span>
-            </div><br><br>
+            </div><br>
             <label for="phone">
-                ¿Cuál es tu número de teléfono?<br><br>
+                ¿Cuál es tu número de teléfono?
             </label>
-            <div class="container" style="display: flex; justify-content: center;">
-                <input id="phone" type="tel" name="pho" />
+            <div id="phone_box" class="container" style="display: flex; justify-content: center;">
+                <input id="phone" type="tel" name="pho" onkeydown="success_phone()" min="10"/>
             <div class="alert alert-info" style="display: none;"></div>
-            </div><br><br>
+            </div><br>
             <div style="display: flex; justify-content: center;">
-                <button><b>Enviar</b></button>
+                <button><b>Buscar</b></button>
             </div>
         </form>
     </div>
-    <div class="footer"></div>
+    <footer></footer>
 </body>
 </html>
