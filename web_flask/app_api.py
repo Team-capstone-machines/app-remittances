@@ -3,7 +3,7 @@
 """
 
 from flask import Flask, request, render_template
-from function_help import Convert_int, Verify_number
+from function_help import Convert_int, Verify_number, Delete_GMT
 import requests
 
 app = Flask(__name__)
@@ -80,13 +80,14 @@ def receiver_id(receiver_id):
         phone = request.args.get('pho')
         # The request to API.
         user_history = requests.get(URL_HISTORY + phone)
+        user_history = Delete_GMT(user_history.json())
         user_receiver = requests.get(URL_RECEIVER + phone)
         # The condition to check the status code, if is 200, displays an
         # HTML page of history. Otherwise, failed.
         if user_receiver.status_code == 200:
             cash = user_receiver.json()['cash']
             return render_template(
-                'history.html', list_history=user_history.json(),
+                'history.html', list_history=user_history,
                 cash=cash, phone=phone)
         else:
             return render_template('failed.html')
