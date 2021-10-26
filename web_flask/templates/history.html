@@ -43,7 +43,7 @@
             <h6 class="balance">Disponible: <h6 id="available">{{ cash }}</h6></h6>
         </div>
         <div>
-            <form action="/receiver/{{ phone }}" method="POST">
+            <form action="/receiver/{{ phone }}?nm={{ name }}" method="POST">
             <div>
                 <h6>¿Cuánto dinero desea retirar?</h6>
             </div>
