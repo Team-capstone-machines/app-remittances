@@ -17,11 +17,19 @@
             </div>
             <div class="status"></div>
         </div>
+        {% if sender %}
+        <form action="/sender" method="GET">
+            <div style="display: flex; justify-content: space-around;">
+                <button>Volver</button>
+            </div>
+        </form>
+        {% else %}
         <form action="/receiver" method="GET">
             <div style="display: flex; justify-content: space-around;">
                 <button>Volver</button>
             </div>
         </form>
+        {% endif %}
     </div>
 </body>
 </html>
