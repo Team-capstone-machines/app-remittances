@@ -55,7 +55,7 @@ def sender():
                     data=dict_put, headers=headers)
                 return render_template('sended.html')
         else:
-            return render_template('Invalid name')
+            return 'Invalid name'
 
 
 @app.route('/receiver', strict_slashes=False)
@@ -69,7 +69,7 @@ def receiver():
 
 @app.route(
     '/receiver/<receiver_id>', methods=['POST', 'GET'], strict_slashes=False)
-def receiver_id(receiver_id):
+def receiver_id(receiver_id=None):
     """ This function takes the methods GET and POST
     sent from an HTML page of the receiver.
 
@@ -77,27 +77,35 @@ def receiver_id(receiver_id):
     # This condition is to display an HTML page of the history.
     if request.method == 'GET':
         # Takes the data sent.
-        if request.args.get('pho'):
+        if request.args.get('pho') and receiver_id == 'receiver_id':
             phone = request.args.get('pho')
+            name = request.args.get('nm')
         else:
-            phone = receiver_id
+            phone = receiver_id.split('&')[0]
+            name = receiver_id.split('&')[1]
         # The request to API.
-        user_history = requests.get(URL_HISTORY + phone)
-        user_history = Delete_GMT(user_history.json())
-        user_receiver = requests.get(URL_RECEIVER + phone)
-        # The condition to check the status code, if is 200, displays an
-        # HTML page of history. Otherwise, failed.
-        if user_receiver.status_code == 200:
-            cash = user_receiver.json()['cash']
-            return render_template(
-                'history.html', list_history=user_history,
-                cash=cash, phone=phone)
+        verified_number = Verify_number(phone)
+        if verified_number == name:
+            user_history = requests.get(URL_HISTORY + phone)
+            user_history = Delete_GMT(user_history.json())
+            user_receiver = requests.get(URL_RECEIVER + phone)
+            # The condition to check the status code, if is 200, displays an
+            # HTML page of history. Otherwise, failed.
+            if user_receiver.status_code == 200:
+                cash = user_receiver.json()['cash']
+                return render_template(
+                    'history.html', list_history=user_history,
+                    cash=cash, phone=phone, name=name)
+            else:
+                return render_template('failed.html')
         else:
-            return render_template('failed.html')
+            return 'Invalid name'
     # This condition is to process the data sent from
     # the HTML page of the receiver.
     if request.method == 'POST':
         # Takes the data sent.
+        name = request.args.get('nm')
+        print(name)
         cash = Convert_int(request.form['cash'])
         headers = {"Content-Type": "application/json"}
         # The body of the API to do the query
@@ -113,7 +121,8 @@ def receiver_id(receiver_id):
                 'success.html', cash=cash,
                 cash_total=user_receiver.json()['cash'])
         else:
-            return render_template('exceeded.html', phone=receiver_id)
+            return render_template(
+                'exceeded.html', phone=receiver_id, name=name)
 
 
 @app.route('/receiver/get', strict_slashes=False)
