@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let quantity = document.getElementsByClassName("currency");
     for (let index = 0; index < quantity.length; index++) {
         amount = CurrencyFormat(quantity[index].innerText)
-        document.getElementsByClassName("currency")[index].innerHTML = '$ ' + amount;
+        document.getElementsByClassName("currency")[index].innerHTML = '$' + amount;
     }
 });

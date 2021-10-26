@@ -159,6 +159,21 @@ label {
     font-family: inherit;
 }
 
+#invalid {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
+#cash.no-valid {
+    border: 1px solid #FA5C7C;
+}
+
 button {
     box-shadow: 0 2px 6px 0 rgba(49, 58, 70, .5);
     font-weight: 600;

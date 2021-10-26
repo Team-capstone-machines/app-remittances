@@ -1,24 +1,30 @@
 body {
-    background-color: #FFF;
+    background-color: #FAFBFE;
     display: flex;
-    justify-content: center;
-    color: #000;
+    flex-direction: column;
+    align-items: center;
+    color: #6C757D;
+    font-family: Poppins;
 }
 
 .square {
+    margin-top: 120px;
+    margin-bottom: 60px;
+    width: 18rem;
     border: none;
-    box-shadow: 0px 0px 12px 0px #8A8A8A;
-    background-color: #F3F3F3;
-    border-radius: 2%;
-    margin: 5%;
-    padding: 4%;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 0 45px 0px rgba(0, 0, 0, .12);
+    padding: 1.5rem;
+    border-radius: .25rem;
+    background-color: #FFF;
 }
 
 .text {
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: .5rem;
+    font-weight: 600;
+    color: #082346;
 }
 
 .status {
@@ -29,25 +35,31 @@ body {
 }
 
 button {
-    padding: 18px 18px;
-    margin: 5%;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    padding: .28rem .8rem;
+    font-size: .875rem;
+    font-weight: 600;
+    display: inline-block;
+    line-height: 1.5;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
-    color: #FFF;
-    background-color: #214CD9;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 0px #606060;
+    color: #FFFF;
+    background-color: #313A46;
+    border: 1px solid transparent;
+    margin: 0;
+    font-family: inherit;
+    box-sizing: border-box;
+    border-radius: 0;
 }
 
 button:hover {
-    background-color: #FFF;
-    color: #214CD9;
-    border: none;
+    background-color: #2A313C;
+    color: #FFF;
+    border-color: #272E38;
 }
 
 button:active {

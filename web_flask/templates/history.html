@@ -8,6 +8,8 @@
     <link rel="icon" href="../static/images/money-flow.png">
     <script type="text/javascript" src="../static/scripts/cash.js"></script>
     <script type="text/javascript" src="../static/scripts/history_cash.js"></script>
+    <script type="text/javascript" src="../static/scripts/balance.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <title>History</title>
 </head>
 <body>
@@ -43,11 +45,11 @@
             <h6 class="balance">Disponible: <h6 id="available">{{ cash }}</h6></h6>
         </div>
         <div>
-            <form action="/receiver/{{ phone }}" method="POST">
+            <form name="cash-balance" action="/receiver/{{ phone }}" onsubmit="return validateBalance()" method="POST">
             <div>
                 <h6>¿Cuánto dinero desea retirar?</h6>
             </div>
-                <div>
+                <div id="cash-box">
                     <input id="cash" name="cash" type="currency" placeholder="Cantidad...">
                 </div>
                 <div style="display: flex; justify-content: space-around;">
