@@ -3,11 +3,13 @@
 
 """
 
+from os import PRIO_PGRP
 from api.v1.views import app_views
 from flask import request, jsonify, abort
 from function_help import Encrypt, Convert_int, Verify_number
 from models import storage
 from models.history import History
+from models.phones import Phones
 from models.receiver import Receiver
 
 # Variables for error cases.
@@ -73,6 +75,11 @@ def receiver():
                 new_inst_2 = History(
                     phone=data_json['phone'], balance='+ ' + data_json['cash'])
                 storage.new(new_inst_2)
+                storage.save()
+                # Create the new data in the phone table.
+                new_inst_3 = Phones(
+                    phone=encrypted_phone, phone_desencrypt=data_json['phone'])
+                storage.new(new_inst_3)
                 storage.save()
                 if '_sa_instance_state' in new_inst.__dict__:
                     del new_inst.__dict__['_sa_instance_state']
