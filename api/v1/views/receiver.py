@@ -135,7 +135,6 @@ def receiver_id(phone_id=None):
                 del new_inst.__dict__['_sa_instance_state']
             return jsonify(_receiver[0].__dict__, new_inst.__dict__)
         if data_json['cash'].find('-') != -1:
-            print('Hello')
             cash_total = int(
                 _receiver[0].__dict__['cash']) - Convert_int(data_json['cash'])
             if cash_total < 0:
