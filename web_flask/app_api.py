@@ -77,7 +77,10 @@ def receiver_id(receiver_id):
     # This condition is to display an HTML page of the history.
     if request.method == 'GET':
         # Takes the data sent.
-        phone = request.args.get('pho')
+        if request.args.get('pho'):
+            phone = request.args.get('pho')
+        else:
+            phone = receiver_id
         # The request to API.
         user_history = requests.get(URL_HISTORY + phone)
         user_history = Delete_GMT(user_history.json())
@@ -110,7 +113,7 @@ def receiver_id(receiver_id):
                 'success.html', cash=cash,
                 cash_total=user_receiver.json()['cash'])
         else:
-            return render_template('exceeded.html')
+            return render_template('exceeded.html', phone=receiver_id)
 
 
 @app.route('/receiver/get', strict_slashes=False)
