@@ -45,7 +45,7 @@
             <h6 class="balance">Disponible: <h6 id="available">{{ cash }}</h6></h6>
         </div>
         <div>
-            <form name="cash-balance" action="/receiver/{{ phone }}" onsubmit="return validateBalance()" method="POST">
+            <form action="/receiver/{{ phone }}?nm={{ name }}" method="POST">
             <div>
                 <h6>¿Cuánto dinero desea retirar?</h6>
             </div>
