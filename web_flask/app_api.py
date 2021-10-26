@@ -99,7 +99,7 @@ def receiver_id(receiver_id=None):
             else:
                 return render_template('failed.html')
         else:
-            return 'Invalid name'
+            return render_template('bad_name.html')
     # This condition is to process the data sent from
     # the HTML page of the receiver.
     if request.method == 'POST':
