@@ -114,10 +114,6 @@ function phoneSuccess() {
 }
 
 function cashSuccess() {
-    let cash = document.forms["fields"]["csh"].value;
-    if (!(/^[0-9]/g.test(cash))) {
-        $('#cash').addClass('invalid');
-    }
     $('#cash').removeClass('invalid');
     $('#no-cash').remove();
 }
