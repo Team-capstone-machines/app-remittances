@@ -66,6 +66,7 @@ def receiver():
             # This condition checks if the phone is registered.
             # Otherwise, failed.
             if user_receiver == []:
+                phone = data_json['phone']
                 data_json['phone'] = encrypted_phone
                 # Create the new data in the receiver table.
                 new_inst = Receiver(**data_json)
@@ -78,7 +79,7 @@ def receiver():
                 storage.save()
                 # Create the new data in the phone table.
                 new_inst_3 = Phones(
-                    phone=encrypted_phone, phone_desencrypt=data_json['phone'])
+                    phone=encrypted_phone, phone_desencrypt=phone)
                 storage.new(new_inst_3)
                 storage.save()
                 if '_sa_instance_state' in new_inst.__dict__:
