@@ -13,6 +13,8 @@
     <link rel="icon" href="../static/images/money-flow.png">
     <script type="text/javascript" src="../static/scripts/cash.js"></script>
     <script type="text/javascript" src="../static/scripts/phone.js"></script>
+    <script type="text/javascript" src="../static/scripts/forbidden.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
     <title>Sender</title>
 </head>
@@ -26,26 +28,26 @@
         <hr id="line">
         <h4 id="title">Envío de remesas</h4>
         <h6 id="description">Diligencia los campos para determinar el envío de una remesa.</h6>
-        <form class="form" action="/sender" method="POST" autocomplete="off">
+        <form name="fields" class="form" action="/sender" onsubmit="return validateForm()" method="POST" autocomplete="off">
             <label for="name">
                 <br>¿A quién vas a enviar dinero?
             </label>
-            <div style="display: flex; justify-content: center;">
-                <input id="name" name="nm" class="name" type="text" placeholder="Nombre...">
+            <div id="name-box" style="display: flex; flex-direction: column; align-items: center;">
+                <input id="name" name="nm" class="name" type="text" onkeyup="nameSuccess()" placeholder="Nombre...">
                 <span></span>
             </div><br>
             <label for="phone">
                 ¿Cuál es su número de teléfono
             </label>
-            <div class="container" style="display: flex; justify-content: center;">
-                  <input id="phone" type="tel" name="pho" />
+            <div id="phone-box" class="container" style="display: flex; flex-direction: column; align-items: center;">
+                  <input id="phone" type="tel" name="pho" onkeyup="phoneSuccess()" />
             <div class="alert alert-info" style="display: none;"></div>
             </div><br>
             <label for="cash">
                 ¿Cuánto dinero vas a enviar?
             </label>
-            <div style="display: flex; justify-content: center;">
-                <input id="cash" name="csh" type='currency' placeholder='Cantidad...' />
+            <div id="cash-box" style="display: flex; flex-direction: column; align-items: center;">
+                <input id="cash" name="csh" type='currency' onkeyup="cashSuccess()" placeholder='Cantidad...' />
                 <span></span>
             </div><br>
             <div style="display: flex; justify-content: center;">

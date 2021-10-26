@@ -170,6 +170,55 @@ label {
     font-family: inherit;
 }
 
+#name.invalid, #phone.invalid,
+#cash.invalid {
+    border: 1px solid #FA5C7C;
+}
+
+#no-name {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
+#no-phone {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
+#no-cash {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
+#no-length {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
 button {
     width: 100%;
     padding-top: .75rem;

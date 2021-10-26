@@ -14,7 +14,7 @@ function validateForm() {
         $('#name').addClass('invalid');
         $('#phone').addClass('invalid');
         if ($('#v_pho').length === 0) {
-            $('#phone_box').append('<p id="v_pho">Debe ser de al menos de 10 dígitos</p>');
+            $('#phone_box').append('<p id="v_pho">Debe ser al menos de 10 dígitos</p>');
         }
         if ($('#p_name').length === 0) {
             $('#name_box').append('<p id="p_name">Campo obligatorio</p>');
@@ -35,10 +35,10 @@ function validateForm() {
       }
       return false;
     }
-    if (phone.length < 10) {
+    if (phone && phone.length < 10) {
         $('#v_pho').addClass('invalid');
-        if ($('v_pho').length === 0) {
-            $('#phone_box').append('<p id="v_pho">Debe ser de al menos de 10 dígitos</p>');
+        if ($('#v_pho').length === 0) {
+            $('#phone_box').append('<p id="v_pho">Debe ser al menos de 10 dígitos</p>');
         }
         return false;
     }
