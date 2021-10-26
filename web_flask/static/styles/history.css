@@ -143,6 +143,7 @@ label {
     color: #6C757D;
     box-sizing: border-box;
     margin-bottom: .8rem;
+    font-family: inherit;
 }
 
 #cash:focus {
@@ -150,6 +151,7 @@ label {
     outline: none;
     border-radius: .25rem;
     font-size: .775rem;
+    font-family: inherit;
 }
 
 #cash::placeholder {

@@ -25,6 +25,7 @@ body {
     margin-bottom: .5rem;
     font-weight: 600;
     color: #082346;
+    font-family: inherit;
 }
 
 .status {
@@ -54,6 +55,7 @@ button {
     font-family: inherit;
     box-sizing: border-box;
     border-radius: 0;
+    font-family: inherit;
 }
 
 button:hover {

@@ -49,6 +49,7 @@ header {
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.1;
+    font-family: inherit;
 }
 
 #description {
@@ -65,6 +66,7 @@ header {
     line-height: 1.1;
     box-sizing: border-box;
     word-wrap: break-word;
+    font-family: inherit;
 }
 
 label {
@@ -74,6 +76,7 @@ label {
     margin-bottom: .5rem;
     font-weight: 600;
     color: #082346;
+    font-family: inherit;
 }
 
 #name {
@@ -87,12 +90,14 @@ label {
     line-height: 1.5;
     color: #6C757D;
     box-sizing: border-box;
+    font-family: inherit;
 }
 
 #name::placeholder {
     color: #A4A4A4;
     text-align: left;
     position: relative;
+    font-family: inherit;
 }
 
 #name:focus {
@@ -100,6 +105,7 @@ label {
     outline: none;
     border-radius: .25rem;
     font-size: .775rem;
+    font-family: inherit;
 }
 
 #name:-webkit {
@@ -117,11 +123,13 @@ label {
     line-height: 1.5;
     color: #6C757D;
     box-sizing: border-box;
+    font-family: inherit;
 }
 
 #phone::placeholder {
     color: #A4A4A4;
     position: relative;
+    font-family: inherit;
     font-family: inherit;
 }
 
@@ -130,6 +138,7 @@ label {
     outline: none;
     border-radius: .25rem;
     font-size: .775rem;
+    font-family: inherit;
 }
 
 #cash {
@@ -143,6 +152,7 @@ label {
     line-height: 1.5;
     color: #6C757D;
     box-sizing: border-box;
+    font-family: inherit;
 }
 
 #cash:focus {
@@ -150,12 +160,14 @@ label {
     outline: none;
     border-radius: .25rem;
     font-size: .775rem;
+    font-family: inherit;
 }
 
 #cash::placeholder {
     color: #A4A4A4;
     text-align: left;
     position: relative;
+    font-family: inherit;
 }
 
 button {
