@@ -4,7 +4,7 @@
 """
 
 from api.v1.views import app_views
-from flask import request, jsonify
+from flask import jsonify
 from function_help import Encrypt
 from models import storage
 
