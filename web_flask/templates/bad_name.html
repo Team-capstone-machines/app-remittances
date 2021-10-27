@@ -11,12 +11,30 @@
 </head>
 <body>
     <div class="square">
+        {% if status == 200 %}
         <div style="display: flex;">
             <div class="text">
-                <p>El nombre no coincide con el número de teléfono solicitado.</p>
+                <p>Teléfono no registrado para ninguna persona.</p>
             </div>
             <div class="status"></div>
         </div>
+        {% elif status == 400 %}
+            {% if error == 'field phone invalid format' %}
+            <div style="display: flex;">
+                <div class="text">
+                    <p>Formato de teléfono invalido.</p>
+                </div>
+                <div class="status"></div>
+            </div>
+            {% elif error == 'Invalid name' %}
+            <div style="display: flex;">
+                <div class="text">
+                    <p>Nombre invalido. No está registrado a ese número</p>
+                </div>
+                <div class="status"></div>
+            </div>
+            {% endif %}
+        {% endif %}
         {% if sender %}
         <form action="/sender" method="GET">
             <div style="display: flex; justify-content: space-around;">
