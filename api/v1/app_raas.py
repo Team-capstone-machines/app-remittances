@@ -18,6 +18,8 @@ def show_error(error):
     """
     list_errror = str(error).split(': ')
     # Conditions to handle the description of the errors.
+    if list_errror[1] == 'Invalid name':
+        return make_response(jsonify({"error": list_errror[1]}), 400)
     if list_errror[1] == 'Not a JSON':
         return make_response(jsonify({"error": list_errror[1]}), 400)
     if list_errror[1] == 'Missing name':
@@ -26,8 +28,23 @@ def show_error(error):
         return make_response(jsonify({"error": list_errror[1]}), 400)
     if list_errror[1] == 'Missing cash':
         return make_response(jsonify({"error": list_errror[1]}), 400)
+    if list_errror[1] == 'field phone invalid format':
+        return make_response(jsonify({"error": list_errror[1]}), 400)
     if list_errror[1] == 'Missing positive(+) or negative(-) sign':
         return make_response(jsonify({"error": list_errror[1]}), 400)
+
+
+@app.errorhandler(401)
+def show_error(error):
+    """ This function process the errors with the code 400.
+
+    """
+    list_errror = str(error).split(': ')
+    if list_errror[1] == 'Missing Pwd_NUFI':
+        return make_response(jsonify({"error": list_errror[1]}), 401)
+    if list_errror[1] == 'The nufi API Key has been denied,\
+            make sure to send a valid API Key and with an active subscription':
+        return make_response(jsonify({"error": list_errror[1]}), 401)
 
 
 @app.errorhandler(404)
