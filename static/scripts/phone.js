@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
-        initialCountry: "auto",
+        initialCountry: "mx",
         preferredCountries: ["us", "co", "mx", "de", "au"],
         geoIpLookup: getIp,
         utilsScript:

@@ -1,31 +1,82 @@
 body {
-    background-color: #FFF;
+    background-color: #FAFBFE;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #000;
+    color: #6C757D;
+    font-family: Poppins;
+}
+
+header {
+    min-height: 70px;
+    width: 100%;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    background-color: #204CD9;
 }
 
 .square {
-    margin-top: 4%;
+    margin-top: 120px;
+    margin-bottom: 60px;
+    width: 18rem;
     border: none;
-    background-color: #F3F3F3;
-    box-shadow: 0px 0px 12px 0px #8A8A8A;
-    padding: 4%;
-    border-radius: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #FFF;
+    box-shadow: 0 0 45px 0px rgba(0, 0, 0, .12);
+    padding: 1.5rem;
+    border-radius: .25rem;
+}
+
+#logo {
+    width: 25%;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+#blank {
+    width: 1rem;
+}
+
+#line {
+    height: 1px;
+    margin: 1rem 0;
+    background-color: currentColor;
+    border: 0;
+    opacity: .25;
+}
+
+h6 {
+    display: inline-block;
+    text-transform: initial;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: .75rem;
+    margin: 10px 0;
+    font-weight: 700;
+    line-height: 1.1;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.balance, #available {
+    color: #204CD9;
 }
 
 .table {
-    width: 60%;
+    width: 100%;
 }
 
 tbody {
     display: block;
     max-height: 200px;
     overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
   
 table thead, tbody tr {
@@ -39,10 +90,11 @@ tbody::-webkit-scrollbar {
 
 #transactions {
     display: table;
-    font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
     box-shadow: 0px 0px 12px 0px #8A8A8A;
+    font-family: inherit;
+    font-size: .75rem;
 }
 
 #transactions td, #transactions th {
@@ -52,75 +104,117 @@ tbody::-webkit-scrollbar {
     overflow: hidden;
 }
 
-#transactions tr:nth-child(odd) {
-    background-color: #EEEEEE;
-}
-
-#transactions tr:nth-child(even) {
-    background-color: #D0D0D0;
-}
-
 #transactions th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #214CD9;
-    color: #FFF;
+    background-color: #D9E0E8;
+    color: #313A46;
 }
 
 label {
     display: block;
     font-size: x-large;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+}
+
+#sign {
+    display: flex;
+    align-items: center;
+    padding: .45rem .9rem;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6E757D;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #D9E0E8;
+    border: 1px solid #DEE2E6;
+    border-radius: .25rem;
 }
 
 #cash {
-    width: 90%;
-    border: none;
-    border-bottom: 1px solid #8A8A8A;
-    background-color: #F3F3F3;
-    font-size: large;
-    color: #8A8A8A;
-    text-align: center;
+    display: block;
+    width: 100%;
+    padding: .28rem .8rem;
+    border: 1px solid #DEE2E6;
+    border-radius: .25rem;
+    font-size: .775rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6C757D;
+    box-sizing: border-box;
+    margin-bottom: .8rem;
+    font-family: inherit;
 }
 
 #cash:focus {
+    border: 1px #2C8EF8 solid;
     outline: none;
-    color: #8A8A8A;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 10px;
-    box-shadow: 0px 0px 12px 0px #8A8A8A;
+    border-radius: .25rem;
+    font-size: .775rem;
+    font-family: inherit;
 }
 
 #cash::placeholder {
     color: #A4A4A4;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    position: relative;
+    font-family: inherit;
+}
+
+#invalid {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0;
+    font-size: .75rem;
+    color: #FA5C7C;
+    font-family: inherit;
+    font-weight: 200;
+}
+
+#cash.no-valid {
+    border: 1px solid #FA5C7C;
 }
 
 button {
-    padding: 15px 25px;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
+    box-shadow: 0 2px 6px 0 rgba(49, 58, 70, .5);
+    font-weight: 600;
+    border-radius: 0;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    padding: .28rem .8rem;
+    font-size: .875rem;
     color: #FFF;
-    background-color: #214CD9;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0px 0px 15px 0px #606060;
+    background-color: #313A46;
+    border-color: #313A46;
+    display: inline-block;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid transparent;
+    margin: 0.5rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 button:hover {
-    background-color: #FFF;
-    color: #214CD9;
-    border: none;
+    background-color: #2A313C;
+    border-color: #272E38;
+    cursor: pointer;
 }
 
 button:active {
 transform: translateY(4px);
+}
+
+footer {
+    bottom: 0;
+    padding: 17px 24px 17px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    background-color: #C0CCDB;
+    text-align: center;
 }

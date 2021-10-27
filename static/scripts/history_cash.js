@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     function CurrencyFormat(number) {
         let decimalplaces = 2;
-        let decimalcharacter = ",";
-        let thousandseparater = ".";
+        let decimalcharacter = ".";
+        let thousandseparater = ",";
         number = parseFloat(number);
         let sign = number < 0 ? "-" : "";
         let formatted = new String(number.toFixed(decimalplaces));
