@@ -29,33 +29,34 @@ def Convert_int(number):
         return int(number.replace('- ', ''))
 
 
-def Verify_number(cellphone):
+def Verify_number(cellphone, token):
     """ This function consumes the API to verify if the cell
     number is registered in the database of Mexico.
     Return: the name of the person that is register this number.
     """
     import requests
-    from os import getenv
 
-    _TOKEN = getenv('_TOKEN')
     # The API URL
     url = "https://nufi.azure-api.net/enriquecimientoinformacion/v1/busqueda"
     headers = {
         "Content-Type": "application/json",
-        "Ocp-Apim-Subscription-Key": _TOKEN
+        "Ocp-Apim-Subscription-Key": token
     }
     # The body of the API to do the query
     body = "{\n  \"telefono\": \"" + cellphone + "\"\n}"
     # The requests to the API
     response = requests.post(url, data=body, headers=headers)
     # The conditions to check the information
-    if response.json()['message'] == 'ok!':
+    if response.status_code == 200:
         if response.json()['data']['person'] is not None:
             return response.json()['data']['person']['names'][0]['display']
         else:
             return 'Phone not registered to any person'
-    else:
+    if response.status_code == 401:
+        return '401'
+    if response.status_code == 400:
         return response.json()['message']
+
 
 def Delete_GMT(hist_dict):
     for date in hist_dict:
