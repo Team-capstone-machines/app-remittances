@@ -9,8 +9,8 @@ import requests
 app = Flask(__name__)
 
 # The API URLs
-URL_RECEIVER = 'http://0.0.0.0:5001/api/v1/receiver/'
-URL_HISTORY = 'http://0.0.0.0:5001/api/v1/history/'
+URL_RECEIVER = 'https://api-remittances.azurewebsites.net/api/v1/receiver/'
+URL_HISTORY = 'https://api-remittances.azurewebsites.net/api/v1/history/'
 
 
 @app.route('/sender', methods=['GET', 'POST'], strict_slashes=False)
@@ -29,33 +29,49 @@ def sender():
         name = request.form['nm']
         phone = request.form['pho']
         cash = Convert_int(request.form['csh'])
-        headers = {"Content-Type": "application/json"}
+        headers = {
+            "Content-Type": "application/json",
+            "Pwd_NUFI": "aa1845517c5f41efb922c961f4e48141"
+        }
         # This dictionary is constructed with the data.
         dict_post = "{\
             \"name\":\"" + name + "\",\
             \"phone\": \"" + phone + "\",\
             \"cash\": \"" + str(cash) + "\"\
         }"
-        verified_number = Verify_number(phone)
-        # Condition to check if the name is equal at sent from
-        # the HTML page of the sender. Otherwise, failed.
-        if verified_number == name:
-            # The request to API.
-            user_get = requests.get(URL_RECEIVER + phone)
-            # Condition to check if the user is registered. Otherwise, update.
-            if not user_get:
-                requests.post(URL_RECEIVER, data=dict_post, headers=headers)
+        # The request to API.
+        user_get = requests.get(URL_RECEIVER + phone)
+        # Condition to check if the user is registered. Otherwise, update.
+        if not user_get:
+            response = requests.post(
+                URL_RECEIVER, data=dict_post, headers=headers)
+            if response.status_code == 200:
+                return render_template(
+                    'bad_name.html', sender=sender, status=200)
+            if response.status_code == 201:
                 return render_template('sended.html')
-            else:
-                # The body of the API to do the query
+            if response.status_code == 400:
+                if response.json()['error'] == 'field phone invalid format':
+                    return render_template(
+                        'bad_name.html', sender=sender, status=400,
+                        error='field phone invalid format')
+                if response.json()['error'] == 'Invalid name':
+                    return render_template(
+                        'bad_name.html', sender=sender,
+                        status=400, error='Invalid name')
+        else:
+            # The body of the API to do the query
+            token = 'aa1845517c5f41efb922c961f4e48141'
+            verified_number = Verify_number(request.form['pho'], token)
+            if verified_number == name:
                 dict_put = "{\
                     \"cash\": \"" + '+ ' + str(cash) + "\"}"
-                requests.put(
+                response = requests.put(
                     URL_RECEIVER + request.form['pho'],
                     data=dict_put, headers=headers)
                 return render_template('sended.html')
-        else:
-            return render_template('bad_name.html', sender=sender)
+            else:
+                return render_template('bad_name.html', sender=sender)
 
 
 @app.route('/receiver', strict_slashes=False)
@@ -84,7 +100,8 @@ def receiver_id(receiver_id=None):
             phone = receiver_id.split('&')[0]
             name = receiver_id.split('&')[1]
         # The request to API.
-        verified_number = Verify_number(phone)
+        token = 'aa1845517c5f41efb922c961f4e48141'
+        verified_number = Verify_number(phone, token)
         if verified_number == name:
             user_history = requests.get(URL_HISTORY + phone)
             user_history = Delete_GMT(user_history.json())
@@ -98,8 +115,15 @@ def receiver_id(receiver_id=None):
                     cash=cash, phone=phone, name=name)
             else:
                 return render_template('failed.html')
+        elif verified_number == 'field phone invalid format.':
+            return render_template(
+                'bad_name.html', status=400,
+                error='field phone invalid format')
+        elif verified_number == 'Phone not registered to any person':
+            return render_template('bad_name.html', status=200)
         else:
-            return render_template('bad_name.html')
+            return render_template(
+                'bad_name.html', status=400, error='Invalid name')
     # This condition is to process the data sent from
     # the HTML page of the receiver.
     if request.method == 'POST':
