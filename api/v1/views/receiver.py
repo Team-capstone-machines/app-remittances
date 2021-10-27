@@ -4,6 +4,7 @@
 """
 
 from os import PRIO_PGRP
+import re
 from api.v1.views import app_views
 from flask import request, jsonify, abort
 from function_help import Encrypt, Convert_int, Verify_number
@@ -19,6 +20,8 @@ PETITION_PHONE = "\
 PETITION_CASH = "The petition 'cash' exceeds the limits defined by the server"
 AMOUNT_INVALIDO = "Invalid amount. Cannot be processed"
 SIGN = "Missing positive(+) or negative(-) sign"
+PWD_NUFI = "The nufi API Key has been denied,\
+    make sure to send a valid API Key and with an active subscription"
 
 @app_views.route(
     "/receiver", methods=['GET', 'POST'], strict_slashes=False)
@@ -41,8 +44,12 @@ def receiver():
         return jsonify(list_receiver)
     # This condition is to create information in the receiver table.
     if request.method == 'POST':
-        # Conditions to handle the API errors.
+        # Condition to handle the headers.
+        token = request.headers.get('Pwd_NUFI')
+        if not token:
+            abort(401, descriptcion="Missing Pwd_NUFI")
         data_json = request.get_json()
+        # Conditions to handle the API errors.
         if not data_json:
             abort(400, description="Not a JSON")
         if 'name' not in data_json:
@@ -53,7 +60,7 @@ def receiver():
             abort(400, description="Missing phone")
         if len(data_json['phone']) > 40:
             abort(413, description=PETITION_PHONE)
-        verified_number = Verify_number(data_json['phone'])
+        verified_number = Verify_number(data_json['phone'], token)
         if verified_number == data_json['name']:
             if 'cash' not in data_json:
                 abort(400, description="Missing cash")
@@ -88,9 +95,15 @@ def receiver():
                     del new_inst_2.__dict__['_sa_instance_state']
                 return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
             else:
-                abort(422, description='The record exists. POST not possible ')
+                abort(422, description='The record exists. POST not possible')
+        elif verified_number == '401':
+            abort(401, description=PWD_NUFI)
+        elif verified_number == 'field phone invalid format.':
+            abort(400, description='field phone invalid format')
+        elif verified_number == 'Phone not registered to any person':
+            return jsonify('Phone not registered to any person'), 200
         else:
-            return jsonify({"name": "Invalid name"})
+            abort(400, description='Invalid name')
 
 
 @app_views.route(
