@@ -46,7 +46,7 @@ def receiver():
         # Condition to handle the headers.
         token = request.headers.get('Pwd_NUFI')
         if not token:
-            abort(401, descriptcion="Missing Pwd_NUFI")
+            abort(401, description="Missing Pwd_NUFI")
         data_json = request.get_json()
         # Conditions to handle the API errors.
         if not data_json:
@@ -95,8 +95,6 @@ def receiver():
                 return jsonify(new_inst.__dict__, new_inst_2.__dict__), 201
             else:
                 abort(422, description='The record exists. POST not possible')
-        elif verified_number == '401':
-            abort(401, description=PWD_NUFI)
         elif verified_number == 'field phone invalid format.':
             abort(400, description='field phone invalid format')
         elif verified_number == 'Phone not registered to any person':
