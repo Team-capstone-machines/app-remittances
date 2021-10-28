@@ -55,8 +55,6 @@ def Verify_number(cellphone, token):
             return response.json()['data']['person']['names'][0]['display']
         else:
             return 'Phone not registered to any person'
-    if response.status_code == 401:
-        return '401'
     if response.status_code == 400:
         return response.json()['message']
 
