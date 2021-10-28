@@ -90,7 +90,6 @@ def receiver():
 def receiver_id(receiver_id=None):
     """ This function takes the methods GET and POST
     sent from an HTML page of the receiver.
-
     """
     # This condition is to display an HTML page of the history.
     if request.method == 'GET':
