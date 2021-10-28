@@ -43,19 +43,19 @@ def sender():
         user_get = requests.get(URL_RECEIVER + phone)
         # Condition to check if the user is registered. Otherwise, update.
         if not user_get:
-            response = requests.post(
+            _response = requests.post(
                 URL_RECEIVER, data=dict_post, headers=headers)
-            if response.status_code == 200:
+            if _response.status_code == 200:
                 return render_template(
                     'bad_name.html', sender=sender, status=200)
-            if response.status_code == 201:
+            if _response.status_code == 201:
                 return render_template('sended.html')
-            if response.status_code == 400:
-                if response.json()['error'] == 'field phone invalid format':
+            if _response.status_code == 400:
+                if _response.json()['error'] == 'field phone invalid format':
                     return render_template(
                         'bad_name.html', sender=sender, status=400,
                         error='field phone invalid format')
-                if response.json()['error'] == 'Invalid name':
+                if _response.json()['error'] == 'Invalid name':
                     return render_template(
                         'bad_name.html', sender=sender,
                         status=400, error='Invalid name')
@@ -66,12 +66,14 @@ def sender():
             if verified_number == name:
                 dict_put = "{\
                     \"cash\": \"" + '+ ' + str(cash) + "\"}"
-                response = requests.put(
+                requests.put(
                     URL_RECEIVER + request.form['pho'],
                     data=dict_put, headers=headers)
                 return render_template('sended.html')
             else:
-                return render_template('bad_name.html', sender=sender)
+                return render_template(
+                    'bad_name.html', sender=sender, status=400,
+                    error='Invalid name')
 
 
 @app.route('/receiver', strict_slashes=False)
@@ -129,7 +131,6 @@ def receiver_id(receiver_id=None):
     if request.method == 'POST':
         # Takes the data sent.
         name = request.args.get('nm')
-        print(name)
         cash = Convert_int(request.form['cash'])
         headers = {"Content-Type": "application/json"}
         # The body of the API to do the query
