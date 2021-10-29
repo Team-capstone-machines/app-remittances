@@ -7,8 +7,12 @@ function validateForm() {
         $('#phone').addClass('invalid');
         $('#cash').addClass('invalid');
         if ($('#no-length').length === 0) {
-            $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
             $('#phone-box').append('<p id="no-length">Debe ser al menos de 10 dígitos</p>');
+        }
+        if ($('#no-name').length === 0) {
+            $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
+        }
+        if ($('#no-cash').length === 0) {
             $('#cash-box').append('<p id="no-cash">Campo obligatorio</p>');
         }
         return false;
@@ -17,8 +21,10 @@ function validateForm() {
         $('#name').addClass('invalid');
         $('#phone').addClass('invalid');
         if ($('#no-length').length === 0) {
-            $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
             $('#phone-box').append('<p id="no-length">Debe ser al menos de 10 dígitos</p>');
+        }
+        if ($('#no-name').length === 0) {
+            $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
         }
         return false;
     }
@@ -27,6 +33,8 @@ function validateForm() {
         $('#cash').addClass('invalid');
         if ($('#no-length').length === 0) {
             $('#phone-box').append('<p id="no-length">Debe ser al menos de 10 dígitos</p>');
+        }
+        if ($('#no-cash').length === 0) {
             $('#cash-box').append('<p id="no-cash">Campo obligatorio</p>');
         }
         return false;
@@ -37,7 +45,11 @@ function validateForm() {
         $('#cash').addClass('invalid');
         if ($('#no-name').length === 0) {
             $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
+        }
+        if ($('#no-phone').length === 0) {
             $('#phone-box').append('<p id="no-phone">Campo obligatorio</p>');
+        }
+        if ($('#no-cash').length === 0) {
             $('#cash-box').append('<p id="no-cash">Campo obligatorio</p>');
         }
         return false;
@@ -47,6 +59,8 @@ function validateForm() {
         $('#phone').addClass('invalid');
         if ($('#no-name').length === 0) {
             $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
+        }
+        if ($('#no-phone').length === 0) {
             $('#phone-box').append('<p id="no-phone">Campo obligatorio</p>');
         }
         return false;
@@ -56,6 +70,8 @@ function validateForm() {
         $('#cash').addClass('invalid');
         if ($('#no-name').length === 0) {
             $('#name-box').append('<p id="no-name">Campo obligatorio</p>');
+        }
+        if ($('#no-cash').length === 0) {
             $('#cash-box').append('<p id="no-cash">Campo obligatorio</p>');
         }
         return false;
@@ -65,6 +81,8 @@ function validateForm() {
         $('#cash').addClass('invalid');
         if ($('#no-phone').length === 0) {
             $('#phone-box').append('<p id="no-phone">Campo obligatorio</p>');
+        }
+        if ($('#no-cash').length === 0) {
             $('#cash-box').append('<p id="no-cash">Campo obligatorio</p>');
         }
         return false;

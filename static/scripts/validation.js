@@ -6,6 +6,8 @@ function validateForm() {
         $('#phone').addClass('invalid');
         if ($('#p_name').length === 0) {
             $('#name_box').append('<p id="p_name">Campo obligatorio</p>');
+        }
+        if ($('#p_phone').length === 0) {
             $('#phone_box').append('<p id="p_phone">Campo obligatorio</p>');
         }
         return false;
