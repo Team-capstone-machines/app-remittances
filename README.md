@@ -1,4 +1,4 @@
-# REST API: Remittances as a Service
+# Remittances as a Service
 
 <p align="center"><img src="img/RaaS.gif" alt="gif logo RaaS"></p>
 
@@ -9,7 +9,7 @@
 | FILE | DESCRIPTION |
 |--|--|
 
-## Architecture
+## Architecture :computer: **REVISAR**
 
 In this project we have implemented the REST -Representational State Transfer- architectural style, which has three key elements:
 
@@ -31,17 +31,17 @@ We have created an API for the remittance service that has two endpoints /receiv
 
 <!-- ![diagram](img/diagram_arch.png) --> DIAGRAMA
 
-### Deploy
+### Deploy :rocket:
 (Explicar el despliegue en Azure)
 
-## Data Model
+## Data Model :pencil:
 The database management is with Azure SQL Database. The creation, maintenance and access to table information is done through SQL Server Management Studio (SSMS), an extension of VSC.
 
 <p align="center"><img src="img/data_receiver.png" alt="data receiver" style="width: 40%"> <img src="img/data_history.png" alt="data history" style="width: 40%"></p>
 
 <p align="center"><img src="img/data_phones.png" alt="data phones" style="width: 40%"></p>
 
-## Views
+## Views :money_with_wings:
 The application has two user interfaces: sender and receiver, each with different purposes.
 
 **View Sender:**
@@ -52,7 +52,7 @@ The application has two user interfaces: sender and receiver, each with differen
 **Views receiver:**
 
 
-## Landing page
+## Landing page :mag_right:
 Visit the project landing page for more information about the project by clicking [here](https://www.canva.com/design/DAEuCKL5xcI/NHLreyvmFhi82IBAA-MgTg/view?website#2):
 
 ## Authors :registered:
@@ -74,7 +74,7 @@ Project developed together with:
   <p align="center"><img src="img/logo-nufi.png" alt="logo NUFI" style="width: 20%"></p>
 
 ### Technologies and tools :zap:
-<p align="center"><img src="img/logo_light_bg.png" alt="logo stoplight" style="width: 20%"> <img src="img/azure-logo.png" alt="logo azure" style="width: 20%"> <img src="img/sql-logo.png" alt="logo Azure SQL DB" style="width: 20%"></p>
+<p align="center"><img src="img/logo_light_bg.png" alt="logo stoplight" style="width: 20%"> <img src="img/azure-logo.png" alt="logo azure" style="width: 20%"> <img src="img/sql-logo.png" alt="logo Azure SQL DB" style="width: 10%"></p>
 
 
 <p align="center"><img src="img/logo-py.png" alt="logo python" style="width: 20%"> <img src="img/flask-logo.png" alt="logo flask" style="width: 20%"> <img src="img/sql_alchemy.png" alt="logo sqlalchemy" style="width: 20%"> </p>
