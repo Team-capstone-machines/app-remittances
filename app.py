@@ -2,9 +2,8 @@
 """ The flask application consuming an API.
 """
 
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template
 from function_help import Convert_int, Verify_number, Delete_GMT
-from os import getenv
 import requests
 
 app = Flask(__name__)
@@ -27,11 +26,11 @@ def sender():
     if request.method == 'POST':
         # Takes the data sent.
         name = request.form['nm']
-        phone = numberPhone
+        phone = request.form['pho']
         cash = Convert_int(request.form['csh'])
         headers = {
             "Content-Type": "application/json",
-            "Pwd_NUFI": "aa1845517c5f41efb922c961f4e48141"
+            "Pwd_NUFI": "f0ebb30161654be880638cd83b1580b1"
         }
         # This dictionary is constructed with the data.
         dict_post = "{\
@@ -61,7 +60,7 @@ def sender():
                         status=400, error='Invalid name')
         else:
             # The body of the API to do the query
-            token = 'aa1845517c5f41efb922c961f4e48141'
+            token = 'f0ebb30161654be880638cd83b1580b1'
             verified_number = Verify_number(request.form['pho'], token)
             if verified_number == name:
                 dict_put = "{\
@@ -83,13 +82,6 @@ def receiver():
     """
     return render_template('receiver.html')
 
-@app.route('/get_phone', methods=['POST'], strict_slashes=False)
-def get_phone():
-    """ This method retrieve the phone through POST verb """
-    global numberPhone
-    numberPhone = request.args.get('value')
-    return jsonify({'reply': 'success'})
-
 
 @app.route(
     '/receiver/<receiver_id>', methods=['POST', 'GET'], strict_slashes=False)
@@ -107,7 +99,7 @@ def receiver_id(receiver_id=None):
             phone = receiver_id.split('&')[0]
             name = receiver_id.split('&')[1]
         # The request to API.
-        token = 'aa1845517c5f41efb922c961f4e48141'
+        token = 'f0ebb30161654be880638cd83b1580b1'
         verified_number = Verify_number(phone, token)
         if verified_number == name:
             user_history = requests.get(URL_HISTORY + phone)
