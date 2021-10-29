@@ -1,21 +1,13 @@
 # REST API: Remittances as a Service
 
-## Technologies
+<p align="center"><img src="img/RaaS.gif" alt="gif logo RaaS"></p>
 
-**Front-end:**
+> [Here](https://github.com/Team-capstone-machines/api-remittances) is the link to the "API-remittances" repository.
 
-- Javascript
-- HTML/CSS
+## File organization :open_file_folder:
 
-**Back-end:**
-
-- Flask
-- SQLAlchemy
-- Python (OOP)
-
-**Database:**
-
-- PostgreSQL (Managed from Heroku)
+| FILE | DESCRIPTION |
+|--|--|
 
 ## Architecture
 
@@ -36,37 +28,32 @@ The structure of the REST response that is sent from the server is a representat
 
 We have created an API for the remittance service that has two endpoints /receiver and /history. For this API we need a Receiver model and a History model. All the API documentation can be consulted [https://themachines.stoplight.io/settings/remittances-as-a-service](here)
 
-![diagram](img/diagram_arch.png)
 
-### Endpoints
+<!-- ![diagram](img/diagram_arch.png) --> DIAGRAMA
 
-table here!
+### Deploy
+(Explicar el despliegue en Azure)
 
-### Data Model
+## Data Model
+The database management is with Azure SQL Database. The creation, maintenance and access to table information is done through SQL Server Management Studio (SSMS), an extension of VSC.
 
-![Data_Model](img/data_model.png)
+<p align="center"><img src="img/data_receiver.png" alt="data receiver" style="width: 40%"> <img src="img/data_history.png" alt="data history" style="width: 40%"></p>
 
-### Mockups
+<p align="center"><img src="img/data_phones.png" alt="data phones" style="width: 40%"></p>
+
+## Views
+The application has two user interfaces: sender and receiver, each with different purposes.
 
 **View Sender:**
-![sender](img/sender.png)
+
 
 <br></br>
 
 **Views receiver:**
-![receiver](img/receiver.png)
 
-_Receiver-success:_
-![receiver-success](img/receiver-success.png)
 
-*Receiver-success-back:*
-![receiver-success-back](img/success-return.png)
-
-*Receiver-success-fail:*
-![receiver-success-fail](img/collect_failed.png)
-
-*Receiver-failed:*
-![receiver-failed](img/receiver-failed.png)
+## Landing page
+Visit the project landing page for more information about the project by clicking [here](https://www.canva.com/design/DAEuCKL5xcI/NHLreyvmFhi82IBAA-MgTg/view?website#2):
 
 ## Authors :registered:
 :woman_technologist: **Diana Parra**
@@ -80,3 +67,18 @@ _Receiver-success:_
 :man_technologist: **Victor Cuartas**
 * [GitHub](https://github.com/vicuartas230/)
 * [Twitter](https://twitter.com/vicuartas230)
+
+***
+
+Project developed together with:
+  <p align="center"><img src="img/logo-nufi.png" alt="logo NUFI" style="width: 20%"></p>
+
+### Technologies and tools :zap:
+<p align="center"><img src="img/logo_light_bg.png" alt="logo stoplight" style="width: 20%"> <img src="img/azure-logo.png" alt="logo azure" style="width: 20%"> <img src="img/sql-logo.png" alt="logo Azure SQL DB" style="width: 20%"></p>
+
+
+<p align="center"><img src="img/logo-py.png" alt="logo python" style="width: 20%"> <img src="img/flask-logo.png" alt="logo flask" style="width: 20%"> <img src="img/sql_alchemy.png" alt="logo sqlalchemy" style="width: 20%"> </p>
+
+***
+
+<p align="center" style="color: #0642ff">2021 ©</p>
