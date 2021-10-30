@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles/success.css">
+    <script type="text/javascript" src="../static/scripts/cash-storaged.js"></script>
+    <link rel="icon" href="../static/images/money-flow.png">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <title>Success</title>
+</head>
+<body>
+    <div class="square">
+        <div style="display: flex; flex-direction: row;">
+            <div class="text">
+                <p>El cobro se ha realizado correctamente</p>
+            </div>
+            <div class="status"></div>
+        </div>
+        <div class="saldo" style="display: flex; justify-content: space-around;">
+            <p class="text">Cantidad cobrada:<h3 class="currency">{{ cash }}</h3></p>
+        </div>
+        <div class="saldo" style="display: flex; justify-content: space-around;">
+            <p class="text">Disponible:<h3 class="currency">{{ cash_total }}</h3></p>
+        </div><br>
+        <div style="display: flex; justify-content: space-around;">
+            <form style="width: 100%;" action="/receiver/get" method="GET">
+                <button>Volver</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
