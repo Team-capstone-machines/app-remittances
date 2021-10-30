@@ -6,6 +6,7 @@
 def Encrypt(number):
     """ This function encrypt the cell number.
     Return: The encrypted number.
+
     """
     import hashlib
 
@@ -18,6 +19,7 @@ def Convert_int(number):
     """ This function takes a string with number
     and the convert in integer.
     Return: The number converted.
+
     """
     # The conditions to convert the string in integer
     if number.find('.') != -1:
@@ -29,10 +31,11 @@ def Convert_int(number):
         return int(number.replace('- ', ''))
 
 
-def Verify_number(cellphone, token):
+def Verify_number(cellphone):
     """ This function consumes the API to verify if the cell
     number is registered in the database of Mexico.
     Return: the name of the person that is register this number.
+
     """
     import requests
 
@@ -40,26 +43,17 @@ def Verify_number(cellphone, token):
     url = "https://nufi.azure-api.net/enriquecimientoinformacion/v1/busqueda"
     headers = {
         "Content-Type": "application/json",
-        "Ocp-Apim-Subscription-Key": token
+        "Ocp-Apim-Subscription-Key": "40fb302751d74a6d8122afe2b5cb8b1a"
     }
     # The body of the API to do the query
     body = "{\n  \"telefono\": \"" + cellphone + "\"\n}"
     # The requests to the API
     response = requests.post(url, data=body, headers=headers)
     # The conditions to check the information
-    if response.status_code == 200:
+    if response.json()['message'] == 'ok!':
         if response.json()['data']['person'] is not None:
             return response.json()['data']['person']['names'][0]['display']
         else:
             return 'Phone not registered to any person'
-    if response.status_code == 401:
-        return '401'
-    if response.status_code == 400:
+    else:
         return response.json()['message']
-
-
-def Delete_GMT(hist_dict):
-    for date in hist_dict:
-        del_gmt = date['date'].replace('GMT', '')
-        date['date'] = del_gmt
-    return hist_dict
