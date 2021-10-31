@@ -8,8 +8,16 @@
 
 | FILE | DESCRIPTION |
 |--|--|
+| app.py | The flask application consuming an API |
+| function_help.py | Helper functions to encrypt phone, convert number to integer, verify number and delete GMT |
+| requirements.txt | File containing the list of dependencies necessary for the correct operation of the application |
 
-## Architecture :computer: **REVISAR**
+Inside the "templates" folder you will find the .html files. Within the "static" folder there are three subfolders:
+  - In "images" are the images that are displayed in the web application.
+  - In "scripts" there are two Javascript files that correspond dynamic elements to the "cash" and "phone" fields.
+  - In "styles" are the .css files, which give the style to the web application.
+
+## Architecture :computer:
 
 In this project we have implemented the REST -Representational State Transfer- architectural style, which has three key elements:
 
@@ -26,7 +34,7 @@ The REST request structure contains:
 
 The structure of the REST response that is sent from the server is a representation of the requested resource. The format we use this time is JSON.
 
-We have created an API for the remittance service that has two endpoints /receiver and /history. For this API we need a Receiver model and a History model. All the API documentation can be consulted [https://themachines.stoplight.io/settings/remittances-as-a-service](here)
+We have created an API for the remittance service that has three endpoints /receiver, /history and /phones. For this API we need a Receiver model, a History model and Phones model. All the API documentation can be consulted [https://themachines.stoplight.io/settings/remittances-as-a-service](here)
 
 
 <!-- ![diagram](img/diagram_arch.png) --> DIAGRAMA
@@ -45,15 +53,15 @@ The database management is with Azure SQL Database. The creation, maintenance an
 The application has two user interfaces: sender and receiver, each with different purposes.
 
 **View Sender:**
-
+<p align="center"><img src="img/sender-view.png" alt="sender view"></p>
 
 <br></br>
 
-**Views receiver:**
-
+**View receiver:**
+<p align="center"><img src="img/receiver-view.png" alt="receiver view"></p>
 
 ## Landing page :mag_right:
-Visit the project landing page for more information about the project by clicking [here](https://www.canva.com/design/DAEuCKL5xcI/NHLreyvmFhi82IBAA-MgTg/view?website#2):
+Visit the project landing page for more information about the project by clicking [here](https://www.canva.com/design/DAEuCKL5xcI/NHLreyvmFhi82IBAA-MgTg/view?website#2)
 
 ## Authors :registered:
 :woman_technologist: **Diana Parra**
