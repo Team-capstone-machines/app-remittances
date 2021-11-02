@@ -37,10 +37,10 @@ The structure of the REST response that is sent from the server is a representat
 We have created an API for the remittance service that has three endpoints /receiver, /history and /phones. For this API we need a Receiver model, a History model and Phones model. All the API documentation can be consulted [https://themachines.stoplight.io/settings/remittances-as-a-service](here)
 
 
-<!-- ![diagram](img/diagram_arch.png) --> DIAGRAMA
+![diagram](img/architecture.png)
 
 ### Deploy :rocket:
-(Explicar el despliegue en Azure)
+The application has been deployed remotely thanks to a Microsoft Azure web apps instance.
 
 ## Data Model :pencil:
 The database management is with Azure SQL Database. The creation, maintenance and access to table information is done through SQL Server Management Studio (SSMS), an extension of VSC.
