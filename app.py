@@ -30,7 +30,7 @@ def sender():
         cash = Convert_int(request.form['csh'])
         headers = {
             "Content-Type": "application/json",
-            "Pwd_NUFI": "f0ebb30161654be880638cd83b1580b1"
+            "Pwd_NUFI": "1cb7f43d33f54dc49bf662e5e21ba3a4"
         }
         # This dictionary is constructed with the data.
         dict_post = "{\
@@ -60,7 +60,7 @@ def sender():
                         status=400, error='Invalid name')
         else:
             # The body of the API to do the query
-            token = 'f0ebb30161654be880638cd83b1580b1'
+            token = '1cb7f43d33f54dc49bf662e5e21ba3a4'
             verified_number = Verify_number(request.form['pho'], token)
             if verified_number == name:
                 dict_put = "{\
@@ -99,7 +99,7 @@ def receiver_id(receiver_id=None):
             phone = receiver_id.split('&')[0]
             name = receiver_id.split('&')[1]
         # The request to API.
-        token = 'f0ebb30161654be880638cd83b1580b1'
+        token = '1cb7f43d33f54dc49bf662e5e21ba3a4'
         verified_number = Verify_number(phone, token)
         if verified_number == name:
             user_history = requests.get(URL_HISTORY + phone)
